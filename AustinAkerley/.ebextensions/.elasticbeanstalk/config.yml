@@ -1,0 +1,16 @@
+branch-defaults:
+  default:
+    environment: austinakerley-env
+    group_suffix: null
+global:
+  application_name: AustinAkerley
+  branch: null
+  default_platform: Python 3.8 running on 64bit Amazon Linux 2
+  default_region: us-west-1
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: null
+  workspace_type: Application
