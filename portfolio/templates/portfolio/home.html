@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ profile.name }} — {{ profile.title }}. {{ profile.tagline }}">
+    <title>{{ profile.name }} · {{ profile.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="aurora" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+    </div>
+
+    <header class="nav">
+        <a class="nav__brand" href="#top">AA</a>
+        <nav class="nav__links">
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav__cta" href="mailto:{{ profile.email }}">Get in touch</a>
+    </header>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero__content reveal">
+                <p class="hero__eyebrow">{{ profile.location }}</p>
+                <h1 class="hero__name">{{ profile.name }}</h1>
+                <h2 class="hero__title">{{ profile.title }}</h2>
+                <p class="hero__tagline">{{ profile.tagline }}</p>
+                <div class="hero__actions">
+                    <a class="btn btn--primary" href="#experience">View my work</a>
+                    <a class="btn btn--ghost" href="{{ profile.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>
+                </div>
+            </div>
+            <div class="hero__stats reveal">
+                {% for stat in stats %}
+                <div class="stat">
+                    <span class="stat__value" data-value="{{ stat.value }}">{{ stat.value }}</span>
+                    <span class="stat__label">{{ stat.label }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about reveal">
+            <p>{{ profile.summary }}</p>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+            <h2 class="section__title reveal"><span>01.</span> Work Experience</h2>
+            <div class="timeline">
+                {% for job in experience %}
+                <article class="timeline__item reveal">
+                    <div class="timeline__marker logo--{{ job.logo }}" aria-hidden="true"></div>
+                    <div class="timeline__card">
+                        <div class="timeline__head">
+                            <h3>{{ job.company }}</h3>
+                            <span class="timeline__dates">{{ job.start }} – {{ job.end }}</span>
+                        </div>
+                        <p class="timeline__role">{{ job.role }}</p>
+                        <ul class="timeline__highlights">
+                            {% for h in job.highlights %}
+                            <li><strong>{{ h.label }}:</strong> {{ h.text }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="section">
+            <h2 class="section__title reveal"><span>02.</span> Education</h2>
+            <div class="grid grid--two">
+                {% for edu in education %}
+                <article class="card reveal">
+                    <h3>{{ edu.school }}</h3>
+                    <p class="card__degree">{{ edu.degree }}</p>
+                    <p class="card__note">{{ edu.note }}</p>
+                    {% if edu.extras %}
+                    <ul class="card__extras">
+                        {% for extra in edu.extras %}<li>{{ extra }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+            <h2 class="section__title reveal"><span>03.</span> Skills &amp; Languages</h2>
+            <div class="grid grid--two">
+                <div class="card reveal">
+                    <h3>What I do</h3>
+                    <ul class="bullet-list">
+                        {% for skill in skills %}<li>{{ skill }}</li>{% endfor %}
+                    </ul>
+                </div>
+                <div class="card reveal">
+                    <h3>Languages &amp; Tooling</h3>
+                    <div class="chips">
+                        {% for lang in languages %}<span class="chip">{{ lang }}</span>{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section contact reveal">
+            <h2 class="section__title"><span>04.</span> Get in touch</h2>
+            <p class="contact__lead">I'm always happy to talk cryptography, distributed systems, or your next big idea.</p>
+            <div class="contact__links">
+                <a class="btn btn--primary" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+                <a class="btn btn--ghost" href="tel:{{ profile.phone }}">{{ profile.phone }}</a>
+                <a class="btn btn--ghost" href="{{ profile.linkedin }}" target="_blank" rel="noopener">{{ profile.linkedin_label }} ↗</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> {{ profile.name }} · Built with Django.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>
