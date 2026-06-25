@@ -1,5 +1,5 @@
 import { profile } from "../data/resume";
-import { MailIcon, LinkedInIcon, PhoneIcon, LocationIcon } from "./Icons";
+import { MailIcon, LinkedInIcon, LocationIcon } from "./Icons";
 
 export default function Hero() {
   return (
@@ -40,12 +40,6 @@ export default function Hero() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer">
               <LinkedInIcon />
               <span>{profile.linkedinLabel}</span>
-            </a>
-          </li>
-          <li>
-            <a href={`tel:${profile.phone.replace(/[^0-9]/g, "")}`}>
-              <PhoneIcon />
-              <span>{profile.phone}</span>
             </a>
           </li>
         </ul>
