@@ -1,5 +1,5 @@
 import { profile } from "../data/resume";
-import { MailIcon, LinkedInIcon, PhoneIcon } from "./Icons";
+import { MailIcon, LinkedInIcon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -21,12 +21,6 @@ export default function Footer() {
             rel="noreferrer"
           >
             <LinkedInIcon /> LinkedIn
-          </a>
-          <a
-            className="btn btn--ghost"
-            href={`tel:${profile.phone.replace(/[^0-9]/g, "")}`}
-          >
-            <PhoneIcon /> Call
           </a>
         </div>
 

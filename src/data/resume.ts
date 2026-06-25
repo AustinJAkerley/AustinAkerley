@@ -20,10 +20,9 @@ export const profile = {
   name: "Austin Akerley",
   title: "Senior Software Engineer",
   location: "Bellevue, WA",
-  email: "austin.akerley@outlook.com",
+  email: "website.austin.akerley@outlook.com",
   linkedin: "https://linkedin.com/in/AustinAkerley",
   linkedinLabel: "linkedin.com/in/AustinAkerley",
-  phone: "817-229-7818",
   tagline:
     "Cryptography & security specialist building and scaling highly available, cloud-native distributed systems.",
   about:
@@ -82,11 +81,11 @@ export const experiences: Experience[] = [
     role: "Site Reliability Engineer II",
     start: "Nov 2020",
     end: "Feb 2022",
-    product: "Dedicated Top Secret government Azure cloud region.",
+    product: "Dedicated government Azure cloud region.",
     bullets: [
       {
         label: "Primary Role",
-        text: "Top Secret SCI w/ Poly cleared SRE. Deployed the infrastructure and application for MS Teams to 2 dedicated cloud regions using IaC & automation.",
+        text: "SRE who deployed the infrastructure and application for MS Teams to 2 dedicated cloud regions using IaC & automation.",
       },
       {
         label: "Secondary Role",
