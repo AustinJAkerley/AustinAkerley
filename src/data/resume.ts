@@ -20,7 +20,7 @@ export const profile = {
   name: "Austin Akerley",
   title: "Senior Software Engineer",
   location: "Bellevue, WA",
-  email: "website.austin.akerley@outlook.com",
+  email: "austin.akerley+website@outlook.com",
   linkedin: "https://linkedin.com/in/AustinAkerley",
   linkedinLabel: "linkedin.com/in/AustinAkerley",
   tagline:
