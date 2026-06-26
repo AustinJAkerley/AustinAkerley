@@ -4,7 +4,7 @@ export default function Education() {
   return (
     <section className="section" id="education">
       <div className="section__head">
-        <span className="section__kicker">03 — Education</span>
+        <span className="section__kicker">04 — Education</span>
         <h2 className="section__title">Academic background</h2>
       </div>
 
