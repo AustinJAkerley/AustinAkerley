@@ -5,7 +5,7 @@ Built with **React + TypeScript + Vite** and designed to be hosted on **Azure St
 
 ## Highlights
 
-- Single-page portfolio with hero, about, experience timeline, education, and skills sections
+- Single-page portfolio with hero, about, experience timeline, projects, education, and skills sections
 - Fully responsive with a mobile navigation drawer
 - Dark, gold-accented theme inspired by Austin's resume
 - Accessible markup, reduced-motion support, and SEO/Open Graph meta tags
@@ -23,7 +23,7 @@ npm run lint     # run oxlint
 
 ## Editing content
 
-All resume content (profile, experience, education, skills, languages) lives in
+All resume content (profile, experience, projects, education, skills, languages) lives in
 [`src/data/resume.ts`](src/data/resume.ts). Update that single file to change what
 the site displays — no component edits required.
 

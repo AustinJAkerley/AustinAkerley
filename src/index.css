@@ -418,6 +418,58 @@ main {
   letter-spacing: -0.5px;
 }
 
+.section__lead {
+  max-width: 640px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 1.1rem 0 0;
+}
+
+/* ---------- Projects ---------- */
+.projects__rule {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  max-width: 640px;
+  margin: 1.2rem 0 0;
+  color: var(--gold-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.projects__ruleBadge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(200, 162, 74, 0.5);
+  background: rgba(200, 162, 74, 0.12);
+  color: var(--gold-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--gold-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.18s ease;
+}
+
+.card__link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.card__link:hover {
+  color: var(--gold);
+}
+
 /* ---------- About ---------- */
 .about__grid {
   display: grid;

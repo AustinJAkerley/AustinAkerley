@@ -8,6 +8,15 @@ export type Experience = {
   bullets: { label: string; text: string }[];
 };
 
+export type Project = {
+  number: number;
+  name: string;
+  tagline: string;
+  description: string;
+  url: string;
+  urlLabel: string;
+};
+
 export type Education = {
   school: string;
   degree: string;
@@ -115,6 +124,39 @@ export const experiences: Experience[] = [
         text: "Completed major feature development for our SoC kernel modules in C++.",
       },
     ],
+  },
+];
+
+export const projectsChallenge = {
+  title: "30 Projects in 45 Days",
+  intro:
+    "A personal challenge to design, build, and ship 30 projects in 45 days. " +
+    "The only rule: every project must be published. It doesn't stop at localhost — " +
+    "each one has to be publicly available on the internet or a real, physical project " +
+    "you can hold in your hands.",
+  rule: "No localhost. Every project ships public on the internet or physical in the real world.",
+};
+
+export const projects: Project[] = [
+  {
+    number: 1,
+    name: "AustinAkerley.com",
+    tagline: "This very website",
+    description:
+      "A modern, responsive personal portfolio built with React, TypeScript, and Vite, " +
+      "and published live on Azure Static Web Apps. The site you're reading right now.",
+    url: "https://austinakerley.com",
+    urlLabel: "austinakerley.com",
+  },
+  {
+    number: 2,
+    name: "PDFDiff",
+    tagline: "Chrome & browser extension",
+    description:
+      "A browser extension that diffs two PDFs side by side, making it easy to spot changes " +
+      "between document versions at a glance. Published and available as a browser extension.",
+    url: "https://github.com/AustinJAkerley/PDFDiff",
+    urlLabel: "github.com/AustinJAkerley/PDFDiff",
   },
 ];
 
