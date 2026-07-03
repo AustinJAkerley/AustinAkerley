@@ -1,5 +1,5 @@
 import { projects, projectsChallenge } from "../data/resume";
-import { ExternalLinkIcon } from "./Icons";
+import { ExternalLinkIcon, ArrowRightIcon } from "./Icons";
 
 export default function Projects() {
   return (
@@ -34,14 +34,29 @@ export default function Projects() {
 
               <p className="card__product">{project.description}</p>
 
-              <a
-                className="card__link"
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ExternalLinkIcon /> {project.urlLabel}
-              </a>
+              {project.thumbnail && (
+                <div className="card__thumb" aria-hidden="true">
+                  {/* TODO: replace placeholder with a real photo at {project.thumbnail} */}
+                  <span className="card__thumbLabel">Photo coming soon</span>
+                </div>
+              )}
+
+              {project.pageHash ? (
+                <a className="card__cta btn btn--primary" href={project.pageHash}>
+                  Learn More <ArrowRightIcon />
+                </a>
+              ) : (
+                project.url && (
+                  <a
+                    className="card__link"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ExternalLinkIcon /> {project.urlLabel}
+                  </a>
+                )
+              )}
             </article>
           </li>
         ))}

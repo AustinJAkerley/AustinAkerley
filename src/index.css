@@ -776,6 +776,236 @@ main {
   font-size: 0.85rem;
 }
 
+/* ---------- Project card extras (timeline) ---------- */
+.card__thumb {
+  margin: 0.4rem 0 1.1rem;
+  height: 160px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: linear-gradient(135deg, var(--surface-2), var(--bg-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__thumbLabel {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card__cta {
+  margin-top: 0.4rem;
+}
+
+.card__cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Dedicated project page ---------- */
+.project {
+  animation: rise 0.8s ease both;
+}
+
+.project__hero {
+  position: relative;
+  padding: 8.5rem 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(
+      1200px 400px at 20% -10%,
+      rgba(200, 162, 74, 0.14),
+      transparent
+    ),
+    var(--bg-soft);
+}
+
+.project__heroInner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.project__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1.4rem;
+  transition: color 0.18s ease;
+}
+
+.project__back svg {
+  width: 18px;
+  height: 18px;
+}
+
+.project__back:hover {
+  color: var(--gold-soft);
+}
+
+.project__title {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0.6rem 0 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(120deg, #ffffff 30%, var(--gold-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.project__tagline {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0.7rem 0 0;
+}
+
+.project__intro {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 1.1rem 0 0;
+}
+
+.project__heroChips {
+  margin-top: 1.8rem;
+}
+
+.project__subhead {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 2.6rem 0 1.2rem;
+}
+
+.project__goals {
+  columns: 2;
+  gap: 1.4rem;
+}
+
+/* ---------- Feature grid (reasons / lessons / upgrades) ---------- */
+.feature__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+
+.feature__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-soft);
+}
+
+.feature__text {
+  margin: 0;
+  color: #c9d0db;
+}
+
+/* ---------- Hardware spec cards ---------- */
+.spec__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec__thumb {
+  height: 130px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: linear-gradient(135deg, var(--surface-2), var(--bg-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.spec__thumbLabel {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.spec__category {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.spec__name {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.spec__detail {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+
+.gallery__item {
+  margin: 0;
+}
+
+.gallery__placeholder {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  background: linear-gradient(135deg, var(--surface-2), var(--bg-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery__placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery__label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.gallery__caption {
+  margin-top: 0.7rem;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+/* ---------- Badge chips ---------- */
+.chip--badge {
+  border-color: rgba(200, 162, 74, 0.4);
+  background: rgba(200, 162, 74, 0.1);
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 820px) {
   .nav__toggle {
@@ -804,6 +1034,10 @@ main {
   .about__grid,
   .skills__grid {
     grid-template-columns: 1fr;
+  }
+
+  .project__goals {
+    columns: 1;
   }
 }
 
