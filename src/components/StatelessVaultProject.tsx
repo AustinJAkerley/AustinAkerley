@@ -226,6 +226,10 @@ export default function StatelessVaultProject() {
                   value={plaintext}
                   onChange={(e) => setPlaintext(e.target.value)}
                   rows={3}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoComplete="off"
+                  spellCheck={false}
                 />
               </div>
               <div className="demo__field">
@@ -239,6 +243,10 @@ export default function StatelessVaultProject() {
                   placeholder="Your encryption passphrase"
                   value={encryptSecret}
                   onChange={(e) => setEncryptSecret(e.target.value)}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoComplete="new-password"
+                  spellCheck={false}
                 />
               </div>
 
@@ -300,6 +308,10 @@ export default function StatelessVaultProject() {
                   value={decryptBundle}
                   onChange={(e) => setDecryptBundle(e.target.value)}
                   rows={6}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoComplete="off"
+                  spellCheck={false}
                 />
               </div>
               <div className="demo__field">
@@ -313,6 +325,10 @@ export default function StatelessVaultProject() {
                   placeholder="The same passphrase used to encrypt"
                   value={decryptSecret}
                   onChange={(e) => setDecryptSecret(e.target.value)}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoComplete="new-password"
+                  spellCheck={false}
                 />
               </div>
 
@@ -380,32 +396,34 @@ export default function StatelessVaultProject() {
         </div>
 
         <div className="feature__grid">
-          <article className="card feature">
+          <a
+            className="card feature card--linkBlock"
+            href={sv.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View StatelessVault source code on GitHub"
+          >
             <h3 className="feature__title">Source code</h3>
             <p className="feature__text">Full implementation on GitHub.</p>
-            <a
-              className="card__link"
-              href={sv.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div className="card__link">
               <ExternalLinkIcon /> github.com/AustinJAkerley/StatelessVault
-            </a>
-          </article>
-          <article className="card feature">
+            </div>
+          </a>
+          <a
+            className="card feature card--linkBlock"
+            href={sv.apiBase}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open the StatelessVault live API site"
+          >
             <h3 className="feature__title">Live API</h3>
             <p className="feature__text">
               Hosted on Azure Functions Flex Consumption — free tier, rate-limited.
             </p>
-            <a
-              className="card__link"
-              href={sv.apiBase}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div className="card__link">
               <ExternalLinkIcon /> statelessvault.azurewebsites.net
-            </a>
-          </article>
+            </div>
+          </a>
           <article className="card feature">
             <h3 className="feature__title">Endpoints</h3>
             <p className="feature__text">
