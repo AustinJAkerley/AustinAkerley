@@ -246,7 +246,7 @@ export default function StatelessVaultProject() {
                 <button
                   className="btn btn--primary"
                   type="button"
-                  onClick={() => { void handleEncrypt(); }}
+                  onClick={handleEncrypt}
                   disabled={encryptLoading || !plaintext || !encryptSecret}
                 >
                   {encryptLoading ? "Encrypting…" : "Encrypt"}
@@ -320,7 +320,7 @@ export default function StatelessVaultProject() {
                 <button
                   className="btn btn--primary"
                   type="button"
-                  onClick={() => { void handleDecrypt(); }}
+                  onClick={handleDecrypt}
                   disabled={decryptLoading || !decryptBundle || !decryptSecret}
                 >
                   {decryptLoading ? "Decrypting…" : "Decrypt"}
