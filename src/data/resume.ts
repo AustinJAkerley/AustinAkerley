@@ -19,6 +19,9 @@ export type Project = {
   // to a dedicated in-site page instead.
   url?: string;
   urlLabel?: string;
+  // Additional external link, e.g. a store listing alongside the source repo.
+  storeUrl?: string;
+  storeUrlLabel?: string;
   // Hash route to a dedicated project page within this site.
   pageHash?: string;
   // Placeholder thumbnail shown on the timeline card.
@@ -206,6 +209,9 @@ export const projects: Project[] = [
       "never have to squint through two versions by hand again. Published and live as a browser extension.",
     url: "https://github.com/AustinJAkerley/PDFDiff",
     urlLabel: "github.com/AustinJAkerley/PDFDiff",
+    storeUrl:
+      "https://chromewebstore.google.com/detail/pdf-diff/pdcoegjagkinbanonmgcgmhefgjipjko",
+    storeUrlLabel: "Chrome Web Store",
   },
   {
     number: 3,
