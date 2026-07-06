@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer__inner">
         <h2 className="footer__title">Let's build something secure.</h2>
         <p className="footer__sub">
-          Open to conversations about cryptography, distributed systems, and cloud platforms.
+          Always up for a conversation about cryptography, distributed systems, and cloud platforms.
         </p>
 
         <div className="footer__links">

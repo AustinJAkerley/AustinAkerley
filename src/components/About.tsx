@@ -10,8 +10,8 @@ export default function About() {
   return (
     <section className="section" id="about">
       <div className="section__head">
-        <span className="section__kicker">01 — About</span>
-        <h2 className="section__title">Security at scale, end to end</h2>
+        <span className="section__kicker">01 / About</span>
+        <h2 className="section__title">Security at scale, from the metal up</h2>
       </div>
 
       <div className="about__grid">

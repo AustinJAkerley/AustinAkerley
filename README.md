@@ -1,4 +1,4 @@
-# Austin Akerley — Portfolio
+# Austin Akerley, Portfolio
 
 A modern, responsive personal portfolio for **Austin Akerley**, Senior Software Engineer.
 Built with **React + TypeScript + Vite** and designed to be hosted on **Azure Static Web Apps**.
@@ -25,15 +25,15 @@ npm run lint     # run oxlint
 
 All resume content (profile, experience, projects, education, skills, languages) lives in
 [`src/data/resume.ts`](src/data/resume.ts). Update that single file to change what
-the site displays — no component edits required.
+the site displays. No component edits required.
 
 ## Deploying to Azure Static Web Apps
 
 This repo includes everything needed for Azure Static Web Apps:
 
-- [`.github/workflows/azure-static-web-apps.yml`](.github/workflows/azure-static-web-apps.yml) —
+- [`.github/workflows/azure-static-web-apps.yml`](.github/workflows/azure-static-web-apps.yml):
   CI/CD workflow that builds the app and deploys on push/PR to `main`.
-- [`staticwebapp.config.json`](staticwebapp.config.json) — SPA fallback routing and
+- [`staticwebapp.config.json`](staticwebapp.config.json): SPA fallback routing and
   security headers.
 
 ### One-time setup

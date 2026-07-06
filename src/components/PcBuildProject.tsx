@@ -9,7 +9,7 @@ export default function PcBuildProject() {
           <a className="project__back" href="#projects">
             <ArrowLeftIcon /> Back to projects
           </a>
-          <span className="section__kicker">Project 03 — Physical Build</span>
+          <span className="section__kicker">Project 03 / Physical Build</span>
           <h1 className="project__title">{pcBuild.name}</h1>
           <p className="project__tagline">{pcBuild.tagline}</p>
           <p className="project__intro">{pcBuild.intro}</p>
@@ -121,7 +121,7 @@ export default function PcBuildProject() {
           <h2 className="section__title">Photos from the build</h2>
           <p className="section__lead">
             {/* TODO: drop real photos into /public/pc-build to replace these placeholders. */}
-            Placeholder gallery — real photos of the build will replace these tiles.
+            Placeholder gallery. Real photos of the build will replace these tiles.
           </p>
         </div>
 

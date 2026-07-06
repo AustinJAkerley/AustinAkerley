@@ -5,7 +5,7 @@ export default function Projects() {
   return (
     <section className="section" id="projects">
       <div className="section__head">
-        <span className="section__kicker">03 — Projects</span>
+        <span className="section__kicker">03 / Projects</span>
         <h2 className="section__title">{projectsChallenge.title}</h2>
         <p className="section__lead">{projectsChallenge.intro}</p>
         <p className="projects__rule">

@@ -80,12 +80,14 @@ export const profile = {
   linkedin: "https://linkedin.com/in/AustinAkerley",
   linkedinLabel: "linkedin.com/in/AustinAkerley",
   tagline:
-    "Cryptography & security specialist building and scaling highly available, cloud-native distributed systems.",
+    "Cryptographer and systems builder. I make the machinery that guards the frontier and refuses to go down.",
   about:
-    "I'm a Senior Software Engineer specializing in cryptography, security, and large-scale distributed systems. " +
-    "I currently design and scale Public Key Infrastructure on Microsoft's PKI team, and I've shipped Hardware " +
-    "Security Module integrations, secure cloud regions, and FPGA cyber components across Microsoft, Oracle, and " +
-    "Lockheed Martin. I love turning hard security problems into reliable, automated platforms.",
+    "I am a Senior Software Engineer who works on the hard, unglamorous parts of security: the cryptography, the " +
+    "key infrastructure, the distributed systems that have to hold a thousand servers together without blinking. " +
+    "Right now I design and scale Public Key Infrastructure on Microsoft's PKI team. Before that I wired Hardware " +
+    "Security Modules into cloud key management, stood up secure cloud regions, and cut FPGA cyber components for " +
+    "fighter jets at Microsoft, Oracle, and Lockheed Martin. The work I love is the same every time. Take a " +
+    "problem that looks like a bureaucratic swamp, drain it, and leave behind something automated, reliable, and honest.",
 };
 
 export const experiences: Experience[] = [
@@ -96,15 +98,15 @@ export const experiences: Experience[] = [
     start: "May 2025",
     end: "Current",
     product:
-      "Critical tier-4 datacenters that host Microsoft's Public Key Infrastructure (MSPKI), CodeSign, and Malware Scanning services.",
+      "Tier-4 datacenters, the fortified backcountry that hosts Microsoft's Public Key Infrastructure (MSPKI), CodeSign, and Malware Scanning services.",
     bullets: [
       {
         label: "Primary Role",
-        text: "Design and scale the PKI infrastructure of our core security services while improving cryptographic security of our product by utilizing TPMs.",
+        text: "I design and scale the PKI behind our core security services, and I harden the cryptography by rooting trust in TPMs instead of hope.",
       },
       {
         label: "Secondary Role",
-        text: "Datacenter buildout, security, and maintenance. Managing over 1000 physical servers across 3 datacenters for the highest security customers.",
+        text: "Datacenter buildout, security, and upkeep. I ride herd on more than 1000 physical servers across three datacenters for the customers who can least afford a breach.",
       },
     ],
   },
@@ -115,19 +117,19 @@ export const experiences: Experience[] = [
     start: "Feb 2022",
     end: "May 2025",
     product:
-      "Key Management Service (KMS), a cloud service that manages the encryption keys used to protect sensitive data.",
+      "Key Management Service (KMS), the cloud vault that guards the encryption keys everything else depends on.",
     bullets: [
       {
         label: "Primary Role",
-        text: "Hardware Security Module (HSM) integration expert specializing in C/C++ to integrate vendor-provided HSM cards as the core foundation for trust and security in KMS. Led the orchestration of HSM changes across 500 bare-metal hosts.",
+        text: "I was the Hardware Security Module hand, writing the C and C++ that fused vendor HSM cards into the bedrock of trust under KMS. I led the orchestration of HSM changes across 500 bare-metal hosts without dropping a key.",
       },
       {
         label: "Secondary Role",
-        text: "Implemented cryptographic algorithms for KMS APIs in Java for an upcoming small-footprint dedicated cloud offering.",
+        text: "I implemented cryptographic algorithms for the KMS APIs in Java for a small-footprint dedicated cloud offering.",
       },
       {
         label: "Smaller Projects",
-        text: "Built a developer tool in Python for validating OCI alarm infra — now a required step in new OCI cloud service creation.",
+        text: "I built a Python tool that validates OCI alarm infrastructure. It is now a required step for standing up any new OCI cloud service.",
       },
     ],
   },
@@ -137,19 +139,19 @@ export const experiences: Experience[] = [
     role: "Site Reliability Engineer II",
     start: "Nov 2020",
     end: "Feb 2022",
-    product: "Dedicated government Azure cloud region.",
+    product: "A dedicated government Azure cloud region, walled off from the rest of the world.",
     bullets: [
       {
         label: "Primary Role",
-        text: "SRE who deployed the infrastructure and application for MS Teams to 2 dedicated cloud regions using IaC & automation.",
+        text: "As an SRE I deployed the infrastructure and the application for MS Teams into two dedicated cloud regions, all of it by infrastructure as code and automation rather than by hand.",
       },
       {
         label: "Secondary Role",
-        text: "Deployed the infrastructure and application for Azure DevOps pipelines in the secure cloud regions. Automated tasks with Powershell and Python.",
+        text: "I stood up the infrastructure and application for Azure DevOps pipelines inside the secure regions, and automated the drudgery with Powershell and Python.",
       },
       {
         label: "Smaller Projects",
-        text: "Debugged app and infra issues for 73 micro-services across 15 teams, implemented region-specific fixes, and contributed heavily to operational and onboarding documentation.",
+        text: "I debugged app and infrastructure fires across 73 micro-services and 15 teams, shipped region-specific fixes, and wrote the operational and onboarding docs that let the next person find their way.",
       },
     ],
   },
@@ -160,15 +162,15 @@ export const experiences: Experience[] = [
     start: "May 2019",
     end: "Nov 2020",
     product:
-      "A custom Network Interface Device (NID) with a XiLinx System on Chip (SoC) FPGA for the F35 fighter jet.",
+      "A custom Network Interface Device (NID) built on a Xilinx System on Chip FPGA for the F-35 fighter jet.",
     bullets: [
       {
         label: "Primary Role",
-        text: "System Verilog developer implementing our primary FPGA cyber components.",
+        text: "I wrote the SystemVerilog for our primary FPGA cyber components, down at the level where the logic is the hardware.",
       },
       {
         label: "Secondary Role",
-        text: "Completed major feature development for our SoC kernel modules in C++.",
+        text: "I built major features for our SoC kernel modules in C++.",
       },
     ],
   },
@@ -177,11 +179,11 @@ export const experiences: Experience[] = [
 export const projectsChallenge = {
   title: "30 Projects in 45 Days",
   intro:
-    "A personal challenge to design, build, and ship 30 projects in 45 days. " +
-    "The only rule: every project must be published. It doesn't stop at localhost — " +
-    "each one has to be publicly available on the internet or a real, physical project " +
-    "you can hold in your hands.",
-  rule: "No localhost. Every project ships public on the internet or physical in the real world.",
+    "A private dare I made to myself: design, build, and ship 30 projects in 45 days. " +
+    "There is one rule and it is unforgiving. Every project has to be published. Nothing counts " +
+    "if it dies on localhost. Each one has to live out in the open on the internet, or exist as a " +
+    "real, physical thing I can hold in my hands.",
+  rule: "No localhost. Every project ships out into the open, on the internet or in the physical world.",
 };
 
 export const projects: Project[] = [
@@ -190,8 +192,8 @@ export const projects: Project[] = [
     name: "AustinAkerley.com",
     tagline: "This very website",
     description:
-      "A modern, responsive personal portfolio built with React, TypeScript, and Vite, " +
-      "and published live on Azure Static Web Apps. The site you're reading right now.",
+      "The site you are standing in. A responsive personal portfolio built with React, TypeScript, and Vite, " +
+      "and published live on Azure Static Web Apps.",
     url: "https://austinakerley.com",
     urlLabel: "austinakerley.com",
   },
@@ -200,8 +202,8 @@ export const projects: Project[] = [
     name: "PDFDiff",
     tagline: "Chrome & browser extension",
     description:
-      "A browser extension that diffs two PDFs side by side, making it easy to spot changes " +
-      "between document versions at a glance. Published and available as a browser extension.",
+      "A browser extension that lays two PDFs side by side and shows you exactly what changed, so you " +
+      "never have to squint through two versions by hand again. Published and live as a browser extension.",
     url: "https://github.com/AustinJAkerley/PDFDiff",
     urlLabel: "github.com/AustinJAkerley/PDFDiff",
   },
@@ -210,9 +212,9 @@ export const projects: Project[] = [
     name: "Custom AMD Workstation & Gaming PC",
     tagline: "A physical, hand-built machine",
     description:
-      "I designed and assembled a high-performance development workstation from the ground up — " +
-      "tuned for software engineering, AI experimentation, Linux and Windows development, video " +
-      "editing, and 4K gaming. A real, physical project you can hold in your hands.",
+      "I designed and assembled a high-performance workstation from bare parts, tuned for software " +
+      "engineering, AI tinkering, Linux and Windows development, video editing, and 4K gaming. A real " +
+      "machine, not a diagram. Something you can put your hands on.",
     // TODO: replace with a real photo of the finished build.
     thumbnail: "/pc-build/finished.jpg",
     pageHash: "#/projects/custom-pc",
@@ -222,9 +224,9 @@ export const projects: Project[] = [
     name: "StatelessVault",
     tagline: "Stateless encryption API",
     description:
-      "A public-facing crypto API that derives a key with Argon2id, encrypts with AES-256-GCM, and returns a " +
-      "self-contained ciphertext bundle the caller can store anywhere. No database, no sessions, no key vault — " +
-      "the server is a pure function.",
+      "A public crypto API that derives a key with Argon2id, encrypts with AES-256-GCM, and hands back a " +
+      "self-contained ciphertext bundle you can stash anywhere. No database, no sessions, no key vault. " +
+      "The server is a pure function and remembers nothing.",
     tags: ["Python", "Azure Functions", "AES-256-GCM", "Argon2id", "GitHub Actions"],
     pageHash: "#/projects/stateless-vault",
   },
@@ -233,28 +235,28 @@ export const projects: Project[] = [
 export const pcBuild: PcBuild = {
   hash: "#/projects/custom-pc",
   name: "Custom AMD Workstation & Gaming PC",
-  tagline: "A machine designed and assembled from the ground up",
+  tagline: "A machine built from bare parts, not bought in a box",
   intro:
-    "Not just a parts list — the story of designing, building, and dialing in a high-performance " +
+    "This is not a parts list. It is the story of designing, building, and dialing in a high-performance " +
     "AMD workstation for software engineering, AI development, Linux, Windows, and 4K gaming.",
   overview: {
     lead:
-      "I decided to build a custom PC rather than buy a prebuilt machine because a hand-picked build " +
-      "gives full control over quality, thermals, noise, and — most importantly — long-term " +
-      "upgradeability. Prebuilts cut corners on power delivery, cooling, and proprietary parts; a " +
-      "custom build lets every component earn its place.",
+      "I built this machine instead of buying a prebuilt because building it yourself is the only way to get " +
+      "exactly what you want. A hand-picked build gives you full command of quality, thermals, noise, and, above " +
+      "all, the freedom to upgrade for years. Prebuilts cut corners on power delivery, cooling, and proprietary " +
+      "parts you can never replace. A custom build makes every component earn its place.",
     reasons: [
       {
         label: "Control",
-        text: "Choose every component for quality, silence, and airflow instead of accepting whatever a prebuilt ships with.",
+        text: "Pick every part for quality, silence, and airflow instead of swallowing whatever a prebuilt decides to ship.",
       },
       {
         label: "Value",
-        text: "Spend the budget on the parts that matter (GPU, cooling, PSU) rather than markup and proprietary boards.",
+        text: "Put the money where it counts, into the GPU, the cooling, and the power supply, not into markup and proprietary boards.",
       },
       {
         label: "Longevity",
-        text: "Standard parts on a modern AM5 platform mean I can upgrade the CPU, RAM, and storage for years to come.",
+        text: "Standard parts on a modern AM5 platform mean I can swap the CPU, RAM, and storage for years without starting over.",
       },
     ],
     goals: [
@@ -295,45 +297,45 @@ export const pcBuild: PcBuild = {
     {
       category: "Storage",
       name: "Dual NVMe SSD configuration",
-      detail: "Two M.2 NVMe drives — one dedicated to Windows 11, one to Pop!_OS for a clean dual boot.",
+      detail: "Two M.2 NVMe drives, one for Windows 11 and one for Pop!_OS, so the two systems never step on each other.",
     },
     {
-      category: "OS — Primary",
+      category: "OS: Primary",
       name: "Windows 11",
       detail: "Gaming, video editing, and day-to-day productivity.",
     },
     {
-      category: "OS — Secondary",
+      category: "OS: Secondary",
       name: "Pop!_OS (dual boot)",
       detail: "Linux development, AI tooling, and a first-class terminal environment.",
     },
     {
       // TODO: fill in the exact CPU model once finalized.
       category: "CPU",
-      name: "AMD Ryzen (AM5) — TODO",
+      name: "AMD Ryzen (AM5): TODO",
       detail: "Placeholder: add the exact Ryzen model, core count, and clocks.",
     },
     {
       // TODO: fill in RAM capacity, speed, and kit details.
       category: "Memory",
-      name: "DDR5 — TODO",
+      name: "DDR5: TODO",
       detail: "Placeholder: add RAM capacity (e.g. 32GB/64GB), speed, and EXPO profile.",
     },
     {
       // TODO: fill in storage capacities for each NVMe drive.
       category: "Storage capacities",
-      name: "NVMe capacities — TODO",
+      name: "NVMe capacities: TODO",
       detail: "Placeholder: add the capacity of each SSD (e.g. 2TB Windows / 2TB Linux).",
     },
     {
       // TODO: add any additional components (fans, monitor, peripherals, etc.).
       category: "More",
-      name: "Additional components — TODO",
+      name: "Additional components: TODO",
       detail: "Placeholder: extra case fans, monitors, and peripherals can be listed here.",
     },
   ],
   hardwareNote:
-    "TODO: several cards above are placeholders — CPU, RAM, and exact storage capacities will be " +
+    "TODO: a few cards above are still placeholders. The CPU, RAM, and exact storage capacities get " +
     "filled in as the build is finalized.",
   buildProcess: [
     {
@@ -385,7 +387,7 @@ export const pcBuild: PcBuild = {
   lessons: [
     {
       label: "Installing M.2 SSDs",
-      text: "Tiny mounting screws and standoffs are fiddly — seating the drive at an angle first makes it far easier.",
+      text: "Tiny mounting screws and standoffs are fiddly little things. Seat the drive at an angle first and it goes in far easier.",
     },
     {
       label: "Front-panel connectors",
@@ -393,7 +395,7 @@ export const pcBuild: PcBuild = {
     },
     {
       label: "GPU power connections",
-      text: "The RTX 5080 needs its power connector fully seated — a partial click can cause boot or stability issues.",
+      text: "The RTX 5080 wants its power connector fully seated. A partial click will haunt you with boot and stability gremlins.",
     },
     {
       label: "BIOS configuration",
@@ -465,7 +467,7 @@ export const education: Education[] = [
     school: "University of Washington",
     degree: "Masters of Science",
     field: "Computer Science",
-    note: "Currently enrolled — graduating April 2027",
+    note: "Currently enrolled, graduating April 2027",
   },
   {
     school: "Texas A&M University",
@@ -524,16 +526,16 @@ export type StatelessVault = {
 export const statelessVault: StatelessVault = {
   hash: "#/projects/stateless-vault",
   name: "StatelessVault",
-  tagline: "A public-facing stateless encryption API — bring your own secret, take back a self-contained ciphertext.",
+  tagline: "A public, stateless encryption API. Bring your own secret, walk away with a self-contained ciphertext.",
   intro:
-    "I built a public-facing crypto API that takes a plaintext string and a user-chosen secret, derives a key " +
-    "with Argon2id, encrypts with AES-256-GCM, and returns a self-contained ciphertext package the caller can " +
-    "store anywhere. Decryption requires only the ciphertext package and the original secret — the server never " +
-    "stores keys, plaintext, ciphertext, or sessions.",
+    "I built a public crypto API that takes a plaintext string and a secret of your choosing, derives a key " +
+    "with Argon2id, encrypts with AES-256-GCM, and returns a self-contained ciphertext package you can store " +
+    "anywhere. Decryption needs only that package and your original secret. The server keeps no keys, no " +
+    "plaintext, no ciphertext, and no sessions. It forgets you the moment it answers.",
   whyInteresting:
-    "The API is genuinely stateless. There's no database, no user accounts, no key vault. The server is a pure " +
+    "The API is genuinely stateless. There is no database, no user accounts, no key vault. The server is a pure " +
     "function: (plaintext, secret) → ciphertext bundle. Lose the secret and the data is unrecoverable, by design. " +
-    "That's a rare property for a public API and it means a compromise of the server leaks nothing historical.",
+    "That is a rare property for a public API, and it means a compromise of the server leaks nothing historical.",
   howItWorks: {
     lead:
       "Argon2id turns the user's password into a strong 256-bit key (memory-hard, resistant to GPU brute force). " +
@@ -542,7 +544,7 @@ export const statelessVault: StatelessVault = {
     steps: [
       {
         label: "Key derivation",
-        text: "Argon2id hashes the user's secret with a random 16-byte salt. The output is a 256-bit key — the same secret + salt combination always produces the same key, but the salt is unique per request so two encryptions of identical plaintext look completely different.",
+        text: "Argon2id hashes the user's secret with a random 16-byte salt. The output is a 256-bit key. The same secret and salt always produce the same key, but the salt is unique per request, so two encryptions of identical plaintext look nothing alike.",
       },
       {
         label: "Encryption",
@@ -550,7 +552,7 @@ export const statelessVault: StatelessVault = {
       },
       {
         label: "The ciphertext bundle",
-        text: "The API returns version, algorithm, salt (hex), nonce (hex), ciphertext (base64), and tag (hex). Everything needed to decrypt is in the bundle — the only missing piece is the original secret, which the server never sees again.",
+        text: "The API returns version, algorithm, salt (hex), nonce (hex), ciphertext (base64), and tag (hex). Everything needed to decrypt lives in the bundle. The only missing piece is your original secret, which the server never sees again.",
       },
     ],
   },
@@ -561,11 +563,11 @@ export const statelessVault: StatelessVault = {
     },
     {
       label: "Flex Consumption vs. Consumption deployment endpoints",
-      text: "Consumption plan apps deploy via /api/zipdeploy, but Flex Consumption uses /api/publish. Mixing them silently succeeds but doesn't update the running code — a frustrating debugging session uncovered this.",
+      text: "Consumption plan apps deploy via /api/zipdeploy, but Flex Consumption uses /api/publish. Mixing them silently succeeds but never updates the running code. A long and frustrating debugging session is how I learned that.",
     },
     {
       label: "OIDC federated credentials for keyless deploys",
-      text: "Set up federated identity credentials on an Azure service principal so GitHub Actions can authenticate to Azure without any stored secrets — no client secrets, no expiry rotation, just a JWT exchange.",
+      text: "Set up federated identity credentials on an Azure service principal so GitHub Actions can authenticate to Azure without any stored secrets. No client secrets, no expiry rotation, just a JWT exchange.",
     },
     {
       label: "In-memory rate limiting in serverless",
