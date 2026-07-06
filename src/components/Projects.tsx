@@ -34,6 +34,16 @@ export default function Projects() {
 
               <p className="card__product">{project.description}</p>
 
+              {project.tags && project.tags.length > 0 && (
+                <ul className="chips card__tags">
+                  {project.tags.map((tag) => (
+                    <li className="chip chip--badge" key={tag}>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
               {project.thumbnail && (
                 <div className="card__thumb" aria-hidden="true">
                   {/* TODO: replace placeholder with a real photo at {project.thumbnail} */}

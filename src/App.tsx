@@ -8,7 +8,8 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 import PcBuildProject from "./components/PcBuildProject";
-import { pcBuild } from "./data/resume";
+import StatelessVaultProject from "./components/StatelessVaultProject";
+import { pcBuild, statelessVault } from "./data/resume";
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -25,11 +26,12 @@ function useHashRoute() {
 export default function App() {
   const hash = useHashRoute();
   const isPcBuild = hash === pcBuild.hash;
+  const isStatelessVault = hash === statelessVault.hash;
 
-  // Scroll to the top when entering the dedicated project page.
+  // Scroll to the top when entering a dedicated project page.
   useEffect(() => {
-    if (isPcBuild) window.scrollTo(0, 0);
-  }, [isPcBuild]);
+    if (isPcBuild || isStatelessVault) window.scrollTo(0, 0);
+  }, [isPcBuild, isStatelessVault]);
 
   return (
     <>
@@ -37,6 +39,10 @@ export default function App() {
       {isPcBuild ? (
         <main>
           <PcBuildProject />
+        </main>
+      ) : isStatelessVault ? (
+        <main>
+          <StatelessVaultProject />
         </main>
       ) : (
         <main>

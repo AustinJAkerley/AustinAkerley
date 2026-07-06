@@ -13,6 +13,8 @@ export type Project = {
   name: string;
   tagline: string;
   description: string;
+  // Tech stack tags shown on the project card.
+  tags?: string[];
   // External link (e.g. a live site or repo). Optional when the project links
   // to a dedicated in-site page instead.
   url?: string;
@@ -214,6 +216,17 @@ export const projects: Project[] = [
     // TODO: replace with a real photo of the finished build.
     thumbnail: "/pc-build/finished.jpg",
     pageHash: "#/projects/custom-pc",
+  },
+  {
+    number: 4,
+    name: "StatelessVault",
+    tagline: "Stateless encryption API",
+    description:
+      "A public-facing crypto API that derives a key with Argon2id, encrypts with AES-256-GCM, and returns a " +
+      "self-contained ciphertext bundle the caller can store anywhere. No database, no sessions, no key vault — " +
+      "the server is a pure function.",
+    tags: ["Python", "Azure Functions", "AES-256-GCM", "Argon2id", "GitHub Actions"],
+    pageHash: "#/projects/stateless-vault",
   },
 ];
 
@@ -491,3 +504,75 @@ export const languages: string[] = [
   "IaC/Terraform",
   "HTML/CSS",
 ];
+
+export type StatelessVault = {
+  hash: string;
+  name: string;
+  tagline: string;
+  intro: string;
+  whyInteresting: string;
+  howItWorks: {
+    lead: string;
+    steps: { label: string; text: string }[];
+  };
+  whatILearned: { label: string; text: string }[];
+  highlights: string[];
+  apiBase: string;
+  githubUrl: string;
+};
+
+export const statelessVault: StatelessVault = {
+  hash: "#/projects/stateless-vault",
+  name: "StatelessVault",
+  tagline: "A public-facing stateless encryption API — bring your own secret, take back a self-contained ciphertext.",
+  intro:
+    "I built a public-facing crypto API that takes a plaintext string and a user-chosen secret, derives a key " +
+    "with Argon2id, encrypts with AES-256-GCM, and returns a self-contained ciphertext package the caller can " +
+    "store anywhere. Decryption requires only the ciphertext package and the original secret — the server never " +
+    "stores keys, plaintext, ciphertext, or sessions.",
+  whyInteresting:
+    "The API is genuinely stateless. There's no database, no user accounts, no key vault. The server is a pure " +
+    "function: (plaintext, secret) → ciphertext bundle. Lose the secret and the data is unrecoverable, by design. " +
+    "That's a rare property for a public API and it means a compromise of the server leaks nothing historical.",
+  howItWorks: {
+    lead:
+      "Argon2id turns the user's password into a strong 256-bit key (memory-hard, resistant to GPU brute force). " +
+      "AES-256-GCM encrypts the plaintext with that key and produces an authentication tag so tampering is detectable. " +
+      "Salt + nonce are random per request and returned to the caller as part of the ciphertext bundle.",
+    steps: [
+      {
+        label: "Key derivation",
+        text: "Argon2id hashes the user's secret with a random 16-byte salt. The output is a 256-bit key — the same secret + salt combination always produces the same key, but the salt is unique per request so two encryptions of identical plaintext look completely different.",
+      },
+      {
+        label: "Encryption",
+        text: "AES-256-GCM encrypts the plaintext using the derived key and a random 12-byte nonce. GCM mode produces an authentication tag alongside the ciphertext, making any tampering detectable on decrypt.",
+      },
+      {
+        label: "The ciphertext bundle",
+        text: "The API returns version, algorithm, salt (hex), nonce (hex), ciphertext (base64), and tag (hex). Everything needed to decrypt is in the bundle — the only missing piece is the original secret, which the server never sees again.",
+      },
+    ],
+  },
+  whatILearned: [
+    {
+      label: "Python 3.13 on Azure Functions Flex Consumption",
+      text: "Flex Consumption is a newer hosting plan with faster cold starts and per-instance billing. Deploying Python 3.13 required pinning the runtime version explicitly in the function app settings.",
+    },
+    {
+      label: "Flex Consumption vs. Consumption deployment endpoints",
+      text: "Consumption plan apps deploy via /api/zipdeploy, but Flex Consumption uses /api/publish. Mixing them silently succeeds but doesn't update the running code — a frustrating debugging session uncovered this.",
+    },
+    {
+      label: "OIDC federated credentials for keyless deploys",
+      text: "Set up federated identity credentials on an Azure service principal so GitHub Actions can authenticate to Azure without any stored secrets — no client secrets, no expiry rotation, just a JWT exchange.",
+    },
+    {
+      label: "In-memory rate limiting in serverless",
+      text: "A per-instance in-memory rate limiter works fine on a single instance but is meaningless at scale. When the function app scales out, each instance has its own counter and the global rate is effectively multiplied by the instance count. A real spend cap requires a distributed store.",
+    },
+  ],
+  highlights: ["Python", "Azure Functions", "AES-256-GCM", "Argon2id", "GitHub Actions"],
+  apiBase: "https://statelessvault.azurewebsites.net",
+  githubUrl: "https://github.com/AustinJAkerley/StatelessVault",
+};

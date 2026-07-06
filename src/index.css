@@ -1006,6 +1006,188 @@ main {
   font-weight: 600;
 }
 
+/* ---------- Project card tags ---------- */
+.card__tags {
+  margin-top: 0.8rem;
+}
+
+/* ---------- Demo section ---------- */
+.demo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.demo__disclaimer {
+  margin: 0;
+  padding: 0.85rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(200, 162, 74, 0.07);
+  color: var(--gold-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.demo__tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.demo__tab {
+  padding: 0.85rem 1.6rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.18s ease, border-bottom-color 0.18s ease;
+}
+
+.demo__tab--active {
+  color: var(--gold-soft);
+  border-bottom-color: var(--gold);
+}
+
+.demo__tab:hover:not(.demo__tab--active) {
+  color: var(--text);
+}
+
+.demo__panel {
+  padding: 1.6rem 1.8rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.demo__field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.demo__label {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.demo__input,
+.demo__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.18s ease;
+}
+
+.demo__input:focus,
+.demo__textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.demo__textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+.demo__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.demo__error {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 100, 100, 0.35);
+  background: rgba(220, 100, 100, 0.1);
+  color: #e07878;
+  font-size: 0.9rem;
+}
+
+.demo__output {
+  display: grid;
+  gap: 1.2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+
+.demo__outputLabel {
+  margin: 0 0 0.5rem;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.demo__resultText {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.demo__pre {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: #c9d0db;
+  overflow-x: auto;
+  line-height: 1.65;
+  white-space: pre;
+}
+
+.demo__fieldList {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.demo__fieldRow {
+  display: flex;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.demo__fieldKey {
+  flex-shrink: 0;
+  min-width: 90px;
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+.demo__fieldVal {
+  color: #c9d0db;
+  word-break: break-all;
+}
+
+.demo__inlineCode {
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: var(--surface-2);
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.85em;
+  color: var(--gold-soft);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 820px) {
   .nav__toggle {
