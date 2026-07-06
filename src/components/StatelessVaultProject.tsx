@@ -189,6 +189,10 @@ export default function StatelessVaultProject() {
             ⚠ This is a live public API on a rate-limited free tier. Please do not paste real
             secrets, and do not lean on it for anything important.
           </p>
+          <p className="demo__disclaimer">
+            Need a production-grade version for your security needs?{" "}
+            <a href="mailto:austin.akerley+StatelessVault@outlook.com">Contact me here</a>.
+          </p>
 
           {/* Tabs */}
           <div className="demo__tabs" role="tablist">
