@@ -470,6 +470,16 @@ main {
   color: var(--gold);
 }
 
+.card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.card__links .card__link {
+  margin-top: 1rem;
+}
+
 /* ---------- About ---------- */
 .about__grid {
   display: grid;

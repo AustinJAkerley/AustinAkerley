@@ -4,7 +4,7 @@ export default function Experience() {
   return (
     <section className="section" id="experience">
       <div className="section__head">
-        <span className="section__kicker">02 / Work Experience</span>
+        <span className="section__kicker">03 / Work Experience</span>
         <h2 className="section__title">Where I have left a mark</h2>
       </div>
 

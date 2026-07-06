@@ -5,7 +5,7 @@ export default function Projects() {
   return (
     <section className="section" id="projects">
       <div className="section__head">
-        <span className="section__kicker">03 / Projects</span>
+        <span className="section__kicker">02 / Projects</span>
         <h2 className="section__title">{projectsChallenge.title}</h2>
         <p className="section__lead">{projectsChallenge.intro}</p>
         <p className="projects__rule">
@@ -15,7 +15,7 @@ export default function Projects() {
       </div>
 
       <ol className="timeline">
-        {projects.map((project) => (
+        {[...projects].reverse().map((project) => (
           <li className="timeline__item" key={project.number}>
             <div className="timeline__marker" aria-hidden="true" />
             <div className="timeline__period">
@@ -56,15 +56,29 @@ export default function Projects() {
                   Learn More <ArrowRightIcon />
                 </a>
               ) : (
-                project.url && (
-                  <a
-                    className="card__link"
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <ExternalLinkIcon /> {project.urlLabel}
-                  </a>
+                (project.url || project.storeUrl) && (
+                  <div className="card__links">
+                    {project.url && (
+                      <a
+                        className="card__link"
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <ExternalLinkIcon /> {project.urlLabel}
+                      </a>
+                    )}
+                    {project.storeUrl && (
+                      <a
+                        className="card__link"
+                        href={project.storeUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <ExternalLinkIcon /> {project.storeUrlLabel}
+                      </a>
+                    )}
+                  </div>
                 )
               )}
             </article>
