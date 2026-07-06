@@ -4,8 +4,8 @@ export default function Skills() {
   return (
     <section className="section" id="skills">
       <div className="section__head">
-        <span className="section__kicker">05 — Skills & Languages</span>
-        <h2 className="section__title">What I bring to the table</h2>
+        <span className="section__kicker">05 / Skills & Languages</span>
+        <h2 className="section__title">What I bring to the fight</h2>
       </div>
 
       <div className="skills__grid">

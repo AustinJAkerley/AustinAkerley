@@ -4,8 +4,8 @@ export default function Experience() {
   return (
     <section className="section" id="experience">
       <div className="section__head">
-        <span className="section__kicker">02 — Work Experience</span>
-        <h2 className="section__title">Where I've made an impact</h2>
+        <span className="section__kicker">02 / Work Experience</span>
+        <h2 className="section__title">Where I have left a mark</h2>
       </div>
 
       <ol className="timeline">
@@ -14,7 +14,7 @@ export default function Experience() {
             <div className="timeline__marker" aria-hidden="true" />
             <div className="timeline__period">
               <span className="timeline__end">{exp.end}</span>
-              <span className="timeline__dash">—</span>
+              <span className="timeline__dash">/</span>
               <span className="timeline__start">{exp.start}</span>
             </div>
 

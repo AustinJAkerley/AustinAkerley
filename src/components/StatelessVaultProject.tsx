@@ -70,7 +70,7 @@ export default function StatelessVaultProject() {
       try {
         bundle = JSON.parse(decryptBundle) as Record<string, string>;
       } catch {
-        throw new Error("Invalid JSON — paste the full response bundle from the Encrypt step.");
+        throw new Error("Invalid JSON. Paste the full response bundle from the Encrypt step.");
       }
       const res = await fetch(`${sv.apiBase}/api/decrypt`, {
         method: "POST",
@@ -106,7 +106,7 @@ export default function StatelessVaultProject() {
           <a className="project__back" href="#projects">
             <ArrowLeftIcon /> Back to projects
           </a>
-          <span className="section__kicker">Project 04 — Crypto API</span>
+          <span className="section__kicker">Project 04 / Crypto API</span>
           <h1 className="project__title">{sv.name}</h1>
           <p className="project__tagline">{sv.tagline}</p>
           <p className="project__intro">{sv.intro}</p>
@@ -140,7 +140,7 @@ export default function StatelessVaultProject() {
           <article className="card feature">
             <h3 className="feature__title">Historical leak-proof</h3>
             <p className="feature__text">
-              A compromise of the server reveals nothing historical — there are no stored
+              A compromise of the server reveals nothing historical. There are no stored
               ciphertexts, sessions, or keys to exfiltrate.
             </p>
           </article>
@@ -148,7 +148,7 @@ export default function StatelessVaultProject() {
             <h3 className="feature__title">Caller-held secret</h3>
             <p className="feature__text">
               The user's secret never leaves the client after the response returns. Lose it and
-              the ciphertext is permanently unrecoverable — by design.
+              the ciphertext is gone for good, by design.
             </p>
           </article>
         </div>
@@ -186,8 +186,8 @@ export default function StatelessVaultProject() {
         <div className="demo">
           {/* Disclaimer */}
           <p className="demo__disclaimer">
-            ⚠ This is a live public API on a rate-limited free tier — please don't paste real
-            secrets, and don't rely on it for anything important.
+            ⚠ This is a live public API on a rate-limited free tier. Please do not paste real
+            secrets, and do not lean on it for anything important.
           </p>
 
           {/* Tabs */}
@@ -418,7 +418,7 @@ export default function StatelessVaultProject() {
           >
             <h3 className="feature__title">Live API</h3>
             <p className="feature__text">
-              Hosted on Azure Functions Flex Consumption — free tier, rate-limited.
+              Hosted on Azure Functions Flex Consumption. Free tier, rate-limited.
             </p>
             <div className="card__link">
               <ExternalLinkIcon /> statelessvault.azurewebsites.net
@@ -427,11 +427,11 @@ export default function StatelessVaultProject() {
           <article className="card feature">
             <h3 className="feature__title">Endpoints</h3>
             <p className="feature__text">
-              POST <code className="demo__inlineCode">/api/encrypt</code> — takes{" "}
+              POST <code className="demo__inlineCode">/api/encrypt</code> takes{" "}
               <code className="demo__inlineCode">plaintext</code> +{" "}
               <code className="demo__inlineCode">secret</code>, returns a ciphertext bundle.
               <br />
-              POST <code className="demo__inlineCode">/api/decrypt</code> — takes the bundle +{" "}
+              POST <code className="demo__inlineCode">/api/decrypt</code> takes the bundle +{" "}
               <code className="demo__inlineCode">secret</code>, returns{" "}
               <code className="demo__inlineCode">plaintext</code>.
             </p>
