@@ -300,37 +300,37 @@ export const pcBuild: PcBuild = {
       detail: "Two M.2 NVMe drives, one for Windows 11 and one for Pop!_OS, so the two systems never step on each other.",
     },
     {
-      category: "OS / Primary",
+      category: "OS: Primary",
       name: "Windows 11",
       detail: "Gaming, video editing, and day-to-day productivity.",
     },
     {
-      category: "OS / Secondary",
+      category: "OS: Secondary",
       name: "Pop!_OS (dual boot)",
       detail: "Linux development, AI tooling, and a first-class terminal environment.",
     },
     {
       // TODO: fill in the exact CPU model once finalized.
       category: "CPU",
-      name: "AMD Ryzen (AM5), TODO",
+      name: "AMD Ryzen (AM5): TODO",
       detail: "Placeholder: add the exact Ryzen model, core count, and clocks.",
     },
     {
       // TODO: fill in RAM capacity, speed, and kit details.
       category: "Memory",
-      name: "DDR5, TODO",
+      name: "DDR5: TODO",
       detail: "Placeholder: add RAM capacity (e.g. 32GB/64GB), speed, and EXPO profile.",
     },
     {
       // TODO: fill in storage capacities for each NVMe drive.
       category: "Storage capacities",
-      name: "NVMe capacities, TODO",
+      name: "NVMe capacities: TODO",
       detail: "Placeholder: add the capacity of each SSD (e.g. 2TB Windows / 2TB Linux).",
     },
     {
       // TODO: add any additional components (fans, monitor, peripherals, etc.).
       category: "More",
-      name: "Additional components, TODO",
+      name: "Additional components: TODO",
       detail: "Placeholder: extra case fans, monitors, and peripherals can be listed here.",
     },
   ],
