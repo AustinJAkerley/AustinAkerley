@@ -90,7 +90,7 @@ export const profile = {
     "Right now I design and scale Public Key Infrastructure on Microsoft's PKI team. Before that I wired Hardware " +
     "Security Modules into cloud key management, stood up secure cloud regions, and cut FPGA cyber components for " +
     "fighter jets at Microsoft, Oracle, and Lockheed Martin. The work I love is the same every time. Take a " +
-    "problem that looks like a bureaucratic swamp, drain it, and leave behind something automated, reliable, and honest.",
+    "complex, tangled problem, simplify it, and leave behind something automated, reliable, and honest.",
 };
 
 export const experiences: Experience[] = [
@@ -150,7 +150,7 @@ export const experiences: Experience[] = [
       },
       {
         label: "Secondary Role",
-        text: "I stood up the infrastructure and application for Azure DevOps pipelines inside the secure regions, and automated the drudgery with Powershell and Python.",
+        text: "I stood up the infrastructure and application for Azure DevOps pipelines inside the secure regions, and automated the repetitive work with Powershell and Python.",
       },
       {
         label: "Smaller Projects",
