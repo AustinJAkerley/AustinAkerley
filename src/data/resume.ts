@@ -77,7 +77,7 @@ export type Education = {
 
 export const profile = {
   name: "Austin Akerley",
-  title: "Senior Software Engineer",
+  title: "Builder, Student, & Dad",
   location: "Bellevue, WA",
   email: "austin.akerley+website@outlook.com",
   linkedin: "https://linkedin.com/in/AustinAkerley",
@@ -85,7 +85,7 @@ export const profile = {
   tagline:
     "Cryptographer and systems builder. I make the machinery that guards the frontier and refuses to go down.",
   about:
-    "I am a Senior Software Engineer who works on the hard, unglamorous parts of security: the cryptography, the " +
+    "I work on the hard, unglamorous parts of security: the cryptography, the " +
     "key infrastructure, the distributed systems that have to hold a thousand servers together without blinking. " +
     "Right now I design and scale Public Key Infrastructure on Microsoft's PKI team. Before that I wired Hardware " +
     "Security Modules into cloud key management, stood up secure cloud regions, and cut FPGA cyber components for " +
