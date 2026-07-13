@@ -119,18 +119,31 @@ export default function PcBuildProject() {
         <div className="section__head">
           <span className="section__kicker">Gallery</span>
           <h2 className="section__title">Photos from the build</h2>
-          <p className="section__lead">
-            {/* TODO: drop real photos into /public/pc-build to replace these placeholders. */}
-            Placeholder gallery. Real photos of the build will replace these tiles.
-          </p>
         </div>
 
         <div className="gallery">
           {pcBuild.gallery.map((g) => (
             <figure className="gallery__item" key={g.caption}>
-              <div className="gallery__placeholder" aria-hidden="true">
-                {/* TODO: replace with <img src={g.image} alt={g.caption} /> */}
-                <span className="gallery__label">Photo coming soon</span>
+              <div className="gallery__placeholder">
+                {g.image ? (
+                  <img
+                    src={g.image}
+                    alt={g.caption}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const label = e.currentTarget
+                        .nextElementSibling as HTMLElement | null;
+                      if (label) label.style.display = "block";
+                    }}
+                  />
+                ) : null}
+                <span
+                  className="gallery__label"
+                  style={{ display: g.image ? "none" : "block" }}
+                >
+                  Photo coming soon
+                </span>
               </div>
               <figcaption className="gallery__caption">{g.caption}</figcaption>
             </figure>

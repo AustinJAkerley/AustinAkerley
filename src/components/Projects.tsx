@@ -45,9 +45,22 @@ export default function Projects() {
               )}
 
               {project.thumbnail && (
-                <div className="card__thumb" aria-hidden="true">
-                  {/* TODO: replace placeholder with a real photo at {project.thumbnail} */}
-                  <span className="card__thumbLabel">Photo coming soon</span>
+                <div className="card__thumb">
+                  <img
+                    className="card__thumbImg"
+                    src={project.thumbnail}
+                    alt={`${project.name} preview`}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const label = e.currentTarget
+                        .nextElementSibling as HTMLElement | null;
+                      if (label) label.style.display = "flex";
+                    }}
+                  />
+                  <span className="card__thumbLabel" style={{ display: "none" }}>
+                    Photo coming soon
+                  </span>
                 </div>
               )}
 

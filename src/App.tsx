@@ -9,7 +9,8 @@ import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 import PcBuildProject from "./components/PcBuildProject";
 import StatelessVaultProject from "./components/StatelessVaultProject";
-import { pcBuild, statelessVault } from "./data/resume";
+import SeeHandshakeProject from "./components/SeeHandshakeProject";
+import { pcBuild, statelessVault, seeHandshake } from "./data/resume";
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -27,11 +28,12 @@ export default function App() {
   const hash = useHashRoute();
   const isPcBuild = hash === pcBuild.hash;
   const isStatelessVault = hash === statelessVault.hash;
+  const isSeeHandshake = hash === seeHandshake.hash;
 
   // Scroll to the top when entering a dedicated project page.
   useEffect(() => {
-    if (isPcBuild || isStatelessVault) window.scrollTo(0, 0);
-  }, [isPcBuild, isStatelessVault]);
+    if (isPcBuild || isStatelessVault || isSeeHandshake) window.scrollTo(0, 0);
+  }, [isPcBuild, isStatelessVault, isSeeHandshake]);
 
   return (
     <>
@@ -43,6 +45,10 @@ export default function App() {
       ) : isStatelessVault ? (
         <main>
           <StatelessVaultProject />
+        </main>
+      ) : isSeeHandshake ? (
+        <main>
+          <SeeHandshakeProject />
         </main>
       ) : (
         <main>

@@ -221,8 +221,7 @@ export const projects: Project[] = [
       "I designed and assembled a high-performance workstation from bare parts, tuned for software " +
       "engineering, AI tinkering, Linux and Windows development, video editing, and 4K gaming. A real " +
       "machine, not a diagram. Something you can put your hands on.",
-    // TODO: replace with a real photo of the finished build.
-    thumbnail: "/pc-build/finished.jpg",
+    thumbnail: "/pc/IMG_4215.jpeg",
     pageHash: "#/projects/custom-pc",
   },
   {
@@ -235,6 +234,18 @@ export const projects: Project[] = [
       "The server is a pure function and remembers nothing.",
     tags: ["Python", "Azure Functions", "AES-256-GCM", "Argon2id", "GitHub Actions"],
     pageHash: "#/projects/stateless-vault",
+  },
+  {
+    number: 5,
+    name: "SeeHandshake",
+    tagline: "Live TLS handshake viewer",
+    description:
+      "A terminal app that watches TLS handshakes happen in real time. It sniffs packets on your network " +
+      "interface, reassembles the TLS records, and lays each connection out in a three-pane view that breaks " +
+      "the ClientHello and ServerHello down field by field. Written in Rust, published to crates.io and as " +
+      "prebuilt binaries and Debian packages for Linux, macOS, and Windows.",
+    tags: ["Rust", "Ratatui TUI", "libpcap", "TLS 1.3", "crates.io"],
+    pageHash: "#/projects/see-handshake",
   },
 ];
 
@@ -421,13 +432,8 @@ export const pcBuild: PcBuild = {
     },
   ],
   gallery: [
-    // TODO: replace every placeholder below with a real photo in /public/pc-build.
-    { caption: "Finished PC", image: "/pc-build/finished.jpg" },
-    { caption: "Internal build", image: "/pc-build/internal.jpg" },
-    { caption: "Cable management", image: "/pc-build/cables.jpg" },
-    { caption: "BIOS", image: "/pc-build/bios.jpg" },
-    { caption: "Windows setup", image: "/pc-build/windows.jpg" },
-    { caption: "Linux setup", image: "/pc-build/linux.jpg" },
+    { caption: "The finished build", image: "/pc/IMG_4215.jpeg" },
+    { caption: "Another angle of the machine", image: "/pc/IMG_4218.jpeg" },
   ],
   highlights: [
     "Windows 11",
@@ -583,4 +589,129 @@ export const statelessVault: StatelessVault = {
   highlights: ["Python", "Azure Functions", "AES-256-GCM", "Argon2id", "GitHub Actions"],
   apiBase: "https://statelessvault.azurewebsites.net",
   githubUrl: "https://github.com/AustinJAkerley/StatelessVault",
+};
+
+export type SeeHandshake = {
+  hash: string;
+  name: string;
+  tagline: string;
+  intro: string;
+  whyInteresting: string;
+  features: { label: string; text: string }[];
+  screenshots: { caption: string; image: string }[];
+  install: { platform: string; note?: string; commands: string[] }[];
+  runSteps: { label: string; text: string }[];
+  highlights: string[];
+  cratesUrl: string;
+  githubUrl: string;
+  releasesUrl: string;
+};
+
+export const seeHandshake: SeeHandshake = {
+  hash: "#/projects/see-handshake",
+  name: "SeeHandshake",
+  tagline: "Watch a TLS handshake happen, live, in your terminal.",
+  intro:
+    "SeeHandshake is a passive TLS handshake viewer for the terminal. It sniffs packets on a network " +
+    "interface you choose, reassembles the TLS records off the TCP stream, parses the plaintext parts of the " +
+    "handshake, and lays every connection out in a three-pane view you can step through record by record. It " +
+    "is written in Rust, published on crates.io, and shipped as prebuilt binaries and Debian packages for " +
+    "Linux, macOS, and Windows.",
+  whyInteresting:
+    "TLS 1.3 encrypts every handshake message after ServerHello, so a passive observer cannot read the " +
+    "certificate or the rest of the flight. SeeHandshake is honest about that line. It parses ClientHello and " +
+    "ServerHello in full, then labels the encrypted stages by their position on the wire instead of pretending " +
+    "to see inside them. On Linux it also names the local process that opened the socket, so you can tie a " +
+    "handshake back to the exact program that made it.",
+  features: [
+    {
+      label: "Three-pane, walkable view",
+      text: "Connections on the left, the record timeline in the middle, and a field-by-field breakdown on the right. Arrow through the records and the right pane follows along.",
+    },
+    {
+      label: "Honest about TLS 1.3",
+      text: "ClientHello and ServerHello are decoded in full: SNI, ALPN, cipher suites, key share groups, and versions. Encrypted stages are detected and labeled, never faked.",
+    },
+    {
+      label: "Teaches as you watch",
+      text: "Every field carries a short plain-English note on what it is and why it matters, plus a Client-to-Server flow diagram you can toggle on. It doubles as an interactive TLS textbook.",
+    },
+    {
+      label: "Process attribution on Linux",
+      text: "Each connection shows the local process that owns the socket, walking /proc as the invoking user. No extra privileges beyond the capture itself.",
+    },
+    {
+      label: "Built to ship",
+      text: "Written in Rust with a libpcap backend, tested in CI across Linux, macOS, and Windows, and released as signed tags with binaries and .deb packages built automatically.",
+    },
+  ],
+  screenshots: [
+    {
+      caption:
+        "Connecting to chatgpt.com. The right pane breaks the ClientHello out field by field: every cipher suite offered, all three key shares (including the X25519MLKEM768 post-quantum hybrid), and each extension the client sent.",
+      image: "/seehandshake/Screenshot.png",
+    },
+  ],
+  install: [
+    {
+      platform: "Any platform with Rust",
+      note: "Build and install straight from crates.io.",
+      commands: [
+        "cargo install seehandshake",
+        'sudo setcap cap_net_raw,cap_net_admin=eip "$(command -v seehandshake)"',
+        "seehandshake --interface <iface>",
+      ],
+    },
+    {
+      platform: "Debian / Ubuntu 24.04+ (.deb)",
+      note: "amd64 shown. On ARM, swap in seehandshake_1.0.5-1_arm64.deb.",
+      commands: [
+        "curl -LO https://github.com/AustinJAkerley/SeeHandshake/releases/download/v1.0.5/seehandshake_1.0.5-1_amd64.deb",
+        "sudo apt install ./seehandshake_1.0.5-1_amd64.deb",
+        'sudo setcap cap_net_raw,cap_net_admin=eip "$(command -v seehandshake)"',
+        "seehandshake --interface <iface>",
+      ],
+    },
+    {
+      platform: "macOS (Apple Silicon)",
+      note: "On Intel Macs, use the x86_64-apple-darwin build instead.",
+      commands: [
+        "curl -LO https://github.com/AustinJAkerley/SeeHandshake/releases/download/v1.0.5/seehandshake-aarch64-apple-darwin.tar.gz",
+        "tar xzf seehandshake-aarch64-apple-darwin.tar.gz",
+        'sudo chown "$USER" /dev/bpf*',
+        "./seehandshake --interface en0",
+      ],
+    },
+    {
+      platform: "Windows",
+      note: "Install Npcap first (https://npcap.com/#download), then run from an Administrator terminal.",
+      commands: [
+        "curl -LO https://github.com/AustinJAkerley/SeeHandshake/releases/download/v1.0.5/seehandshake-x86_64-pc-windows-msvc.zip",
+        "tar -xf seehandshake-x86_64-pc-windows-msvc.zip",
+        '.\\seehandshake.exe --interface "Ethernet"',
+      ],
+    },
+  ],
+  runSteps: [
+    {
+      label: "Grant capture rights",
+      text: "Live capture opens a raw socket, so it needs privileges. On Linux use setcap (above) or sudo, on macOS open /dev/bpf* or use sudo, on Windows run as Administrator.",
+    },
+    {
+      label: "Find your interface",
+      text: "Run `seehandshake --list-interfaces` to see the available network interfaces and pick the one you are actually using (often wlan0, eth0, or en0).",
+    },
+    {
+      label: "Start it",
+      text: "Run `seehandshake --interface <iface>` and the three-pane view opens. It sits and waits for TLS traffic to appear.",
+    },
+    {
+      label: "Make a handshake",
+      text: "From another terminal run `curl https://example.com`, or just browse. The connection pops into the left pane and you can arrow through every record.",
+    },
+  ],
+  highlights: ["Rust", "Ratatui TUI", "libpcap", "TLS 1.3", "crates.io", "Debian package"],
+  cratesUrl: "https://crates.io/crates/seehandshake",
+  githubUrl: "https://github.com/AustinJAkerley/SeeHandshake",
+  releasesUrl: "https://github.com/AustinJAkerley/SeeHandshake/releases/latest",
 };
