@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 import PcBuildProject from "./components/PcBuildProject";
 import StatelessVaultProject from "./components/StatelessVaultProject";
 import SeeHandshakeProject from "./components/SeeHandshakeProject";
-import { pcBuild, statelessVault, seeHandshake } from "./data/resume";
+import AppProjectPage from "./components/AppProjectPage";
+import { pcBuild, statelessVault, seeHandshake, speedometer, daysTill } from "./data/resume";
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -29,11 +30,14 @@ export default function App() {
   const isPcBuild = hash === pcBuild.hash;
   const isStatelessVault = hash === statelessVault.hash;
   const isSeeHandshake = hash === seeHandshake.hash;
+  const isSpeedometer = hash === speedometer.hash;
+  const isDaysTill = hash === daysTill.hash;
 
   // Scroll to the top when entering a dedicated project page.
   useEffect(() => {
-    if (isPcBuild || isStatelessVault || isSeeHandshake) window.scrollTo(0, 0);
-  }, [isPcBuild, isStatelessVault, isSeeHandshake]);
+    if (isPcBuild || isStatelessVault || isSeeHandshake || isSpeedometer || isDaysTill)
+      window.scrollTo(0, 0);
+  }, [isPcBuild, isStatelessVault, isSeeHandshake, isSpeedometer, isDaysTill]);
 
   return (
     <>
@@ -49,6 +53,14 @@ export default function App() {
       ) : isSeeHandshake ? (
         <main>
           <SeeHandshakeProject />
+        </main>
+      ) : isSpeedometer ? (
+        <main>
+          <AppProjectPage project={speedometer} />
+        </main>
+      ) : isDaysTill ? (
+        <main>
+          <AppProjectPage project={daysTill} />
         </main>
       ) : (
         <main>

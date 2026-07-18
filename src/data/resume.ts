@@ -247,6 +247,34 @@ export const projects: Project[] = [
     tags: ["Rust", "Ratatui TUI", "libpcap", "TLS 1.3", "crates.io"],
     pageHash: "#/projects/see-handshake",
   },
+  {
+    number: 6,
+    name: "TyrantEspresso",
+    tagline: "Placeholder · coming soon",
+    description:
+      "A project in the works. Details will land here as it takes shape.",
+    tags: ["Coming soon"],
+  },
+  {
+    number: 7,
+    name: "Speedometer No Ads",
+    tagline: "GPS speedometer · iOS App Store",
+    description:
+      "A clean GPS speedometer for golf carts, e-scooters, and e-bikes, built with React Native and Expo. " +
+      "This one is all about the Apple side: learning the full iPhone App Store publishing path end to end.",
+    tags: ["Expo", "React Native", "expo-location", "EAS Build", "TypeScript"],
+    pageHash: "#/projects/speedometer",
+  },
+  {
+    number: 8,
+    name: "DaysTill",
+    tagline: "Offline countdown app · Google Play",
+    description:
+      "An offline app to count down the days until anything, built with React Native and Expo. " +
+      "The focus here is the Android side: learning the EAS Android build and Google Play release path.",
+    tags: ["Expo", "React Native", "AsyncStorage", "EAS Build", "TypeScript"],
+    pageHash: "#/projects/daystill",
+  },
 ];
 
 export const pcBuild: PcBuild = {
@@ -684,8 +712,9 @@ export const seeHandshake: SeeHandshake = {
     },
     {
       platform: "Windows",
-      note: "Install Npcap first (https://npcap.com/#download), then run from an Administrator terminal.",
+      note: "Npcap is the capture driver (the Windows equivalent of libpcap) and is required. winget fetches and installs it. Run everything from an Administrator terminal.",
       commands: [
+        "winget install Insecure.Npcap",
         "curl -LO https://github.com/AustinJAkerley/SeeHandshake/releases/download/v1.0.5/seehandshake-x86_64-pc-windows-msvc.zip",
         "tar -xf seehandshake-x86_64-pc-windows-msvc.zip",
         '.\\seehandshake.exe --interface "Ethernet"',
@@ -714,4 +743,183 @@ export const seeHandshake: SeeHandshake = {
   cratesUrl: "https://crates.io/crates/seehandshake",
   githubUrl: "https://github.com/AustinJAkerley/SeeHandshake",
   releasesUrl: "https://github.com/AustinJAkerley/SeeHandshake/releases/latest",
+};
+
+// A shared shape for the Expo mobile-app project pages (Speedometer, DaysTill).
+export type AppProject = {
+  hash: string;
+  name: string;
+  tagline: string;
+  kicker: string;
+  intro: string;
+  focus: { label: string; text: string };
+  features: { label: string; text: string }[];
+  publishTitle: string;
+  publishLead: string;
+  publishSteps: { step: string; title: string; text: string }[];
+  highlights: string[];
+  status: string;
+  privacyUrl: string;
+  githubUrl: string;
+  storeUrl?: string;
+  storeUrlLabel?: string;
+};
+
+export const speedometer: AppProject = {
+  hash: "#/projects/speedometer",
+  name: "Speedometer No Ads",
+  tagline: "A clean GPS speedometer for golf carts, e-scooters, and e-bikes.",
+  kicker: "Project 07 / iOS app",
+  intro:
+    "Speedometer No Ads turns your phone into a large, glanceable GPS speedometer for slower rides: golf " +
+    "carts, e-scooters, and e-bikes. It smooths the raw GPS signal, warns you when you cross a speed limit " +
+    "you set, and tracks your trip. No ads, no accounts, no data collection. Built with React Native and " +
+    "Expo. The real point of this project is to learn the Apple side of shipping mobile software.",
+  focus: {
+    label: "Focus: publishing to the iPhone App Store",
+    text:
+      "Speedometer is my deep dive into Apple's release pipeline: enrolling in the Apple Developer Program, " +
+      "cloud-building the signed iOS binary with EAS (no Mac required), testing through TestFlight, and taking " +
+      "the app all the way through App Store review.",
+  },
+  features: [
+    {
+      label: "Smoothed live speed",
+      text: "Reads GPS at high accuracy, then filters jitter and rejects impossible spikes so the number stays steady and honest.",
+    },
+    {
+      label: "GPS signal quality",
+      text: "A live indicator shows how strong the fix is, plus the current accuracy in meters, so you know how much to trust the reading.",
+    },
+    {
+      label: "Custom speed limit",
+      text: "Set your own limit; the dial turns red and the phone buzzes once each time you cross it.",
+    },
+    {
+      label: "Trip stats",
+      text: "Tracks top speed, average speed, and distance, in mph or km/h, with the screen kept awake while you ride.",
+    },
+    {
+      label: "Private by design",
+      text: "Fully offline. Location is used only on-device to compute speed and is never uploaded. No ads, ever.",
+    },
+  ],
+  publishTitle: "The road to the App Store",
+  publishLead:
+    "EAS builds the signed iOS binary in the cloud, so the entire Apple path works without owning a Mac.",
+  publishSteps: [
+    {
+      step: "01",
+      title: "Apple Developer Program",
+      text: "Enroll ($99/year) to unlock code signing and App Store Connect.",
+    },
+    {
+      step: "02",
+      title: "App identity",
+      text: "Reserve the bundle identifier and create the app record in App Store Connect.",
+    },
+    {
+      step: "03",
+      title: "Cloud build",
+      text: "`eas build --platform ios --profile production` generates the signed build; EAS manages the certificates and provisioning.",
+    },
+    {
+      step: "04",
+      title: "TestFlight",
+      text: "The build lands in TestFlight for real-device testing before it ever reaches the public.",
+    },
+    {
+      step: "05",
+      title: "Listing & privacy",
+      text: "Add screenshots, the description, and the public privacy-policy URL required by Apple.",
+    },
+    {
+      step: "06",
+      title: "Submit for review",
+      text: "`eas submit` uploads the build to App Store Connect, then Apple reviews and releases it.",
+    },
+  ],
+  highlights: ["Expo", "React Native", "expo-location", "EAS Build", "TypeScript", "iOS"],
+  status: "iOS build in progress — heading for App Store review",
+  privacyUrl: "https://austinakerley.com/speedometer/privacy",
+  githubUrl: "https://github.com/AustinJAkerley/Speedometer",
+};
+
+export const daysTill: AppProject = {
+  hash: "#/projects/daystill",
+  name: "DaysTill",
+  tagline: "Count down the days until anything. Offline, no accounts.",
+  kicker: "Project 08 / Android app",
+  intro:
+    "DaysTill is a clean, offline app for counting down the days until anything: a goal, a trip, a deadline, " +
+    "or something you're trying to get past. Add a countdown with a title, date, and color, and watch it tick " +
+    "down. No ads, no accounts, no tracking; countdowns live on your device. Built with React Native and Expo. " +
+    "The real point of this project is to learn the Android side of shipping mobile software.",
+  focus: {
+    label: "Focus: the Android build path",
+    text:
+      "DaysTill is my deep dive into Google Play: the EAS Android build (a signed .aab), keystore management, " +
+      "internal testing tracks, the Data safety form, and rolling out a production release.",
+  },
+  features: [
+    {
+      label: "All your countdowns",
+      text: "A home screen listing every countdown, sorted by soonest first.",
+    },
+    {
+      label: "Add in seconds",
+      text: "Give a countdown a title, a target date, and an accent color, and it's live.",
+    },
+    {
+      label: "Detail view",
+      text: "Tap any countdown for a full-screen view of exactly how long is left.",
+    },
+    {
+      label: "Archive or delete",
+      text: "Tuck away events once they've passed, or remove them entirely.",
+    },
+    {
+      label: "Private by design",
+      text: "Automatic light/dark theme, stored locally via AsyncStorage, and fully offline. Nothing leaves your device.",
+    },
+  ],
+  publishTitle: "The road to Google Play",
+  publishLead:
+    "EAS builds the signed Android App Bundle in the cloud and can submit it straight to the Play Console.",
+  publishSteps: [
+    {
+      step: "01",
+      title: "Play Console",
+      text: "Register the Google Play developer account (a one-time $25 fee).",
+    },
+    {
+      step: "02",
+      title: "App identity",
+      text: "Set the Android package name and create the app in the Play Console.",
+    },
+    {
+      step: "03",
+      title: "Cloud build",
+      text: "`eas build --platform android --profile production` generates the signed .aab; EAS manages the upload keystore.",
+    },
+    {
+      step: "04",
+      title: "Internal testing",
+      text: "Upload to an internal testing track to install and try it on real Android devices first.",
+    },
+    {
+      step: "05",
+      title: "Data safety & privacy",
+      text: "Complete Google Play's Data safety form and link the public privacy-policy URL.",
+    },
+    {
+      step: "06",
+      title: "Production release",
+      text: "`eas submit` uploads the bundle to Play, then roll it out to the production track.",
+    },
+  ],
+  highlights: ["Expo", "React Native", "AsyncStorage", "EAS Build", "TypeScript", "Android"],
+  status: "Android build in progress — heading for Google Play",
+  privacyUrl: "https://austinakerley.com/daystill/privacy",
+  githubUrl: "https://github.com/AustinJAkerley/DaysTill",
 };
