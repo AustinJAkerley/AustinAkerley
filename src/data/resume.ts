@@ -26,6 +26,8 @@ export type Project = {
   pageHash?: string;
   // Placeholder thumbnail shown on the timeline card.
   thumbnail?: string;
+  // When true, the thumbnail is a portrait image shown to the right of the text.
+  thumbnailPortrait?: boolean;
 };
 
 export type SpecCard = {
@@ -222,6 +224,7 @@ export const projects: Project[] = [
       "engineering, AI tinkering, Linux and Windows development, video editing, and 4K gaming. A real " +
       "machine, not a diagram. Something you can put your hands on.",
     thumbnail: "/pc/IMG_4215.jpeg",
+    thumbnailPortrait: true,
     pageHash: "#/projects/custom-pc",
   },
   {
@@ -245,34 +248,42 @@ export const projects: Project[] = [
       "the ClientHello and ServerHello down field by field. Written in Rust, published to crates.io and as " +
       "prebuilt binaries and Debian packages for Linux, macOS, and Windows.",
     tags: ["Rust", "Ratatui TUI", "libpcap", "TLS 1.3", "crates.io"],
+    thumbnail: "/seehandshake/Screenshot.png",
     pageHash: "#/projects/see-handshake",
   },
   {
     number: 6,
     name: "TyrantEspresso",
-    tagline: "Placeholder · coming soon",
+    tagline: "Smartcard-gated espresso machine",
     description:
-      "A project in the works. Details will land here as it takes shape.",
-    tags: ["Coming soon"],
+      "An espresso machine that refuses to pour until you present a smartcard it cryptographically trusts. " +
+      "A hardware build meets applied PKI, now standing guard in the Microsoft kitchen.",
+    tags: ["Smartcards", "SLE4442", "C / ioctl", "Hardware", "PKI"],
+    thumbnail: "/TyrantEspresso/TyrantEspresso.jpeg",
+    pageHash: "#/projects/tyrant-espresso",
   },
   {
     number: 7,
     name: "Speedometer No Ads",
     tagline: "GPS speedometer · iOS App Store",
     description:
-      "A clean GPS speedometer for golf carts, e-scooters, and e-bikes, built with React Native and Expo. " +
-      "This one is all about the Apple side: learning the full iPhone App Store publishing path end to end.",
+      "A clean, ad-free GPS speedometer for golf carts, e-scooters, and e-bikes, built with React Native and " +
+      "Expo. Born from real speeding tickets in my Texas neighborhood, now live on the iOS App Store.",
     tags: ["Expo", "React Native", "expo-location", "EAS Build", "TypeScript"],
+    thumbnail: "/speedometer/Speedometer.jpeg",
+    thumbnailPortrait: true,
     pageHash: "#/projects/speedometer",
   },
   {
     number: 8,
     name: "DaysTill",
-    tagline: "Offline countdown app · Google Play",
+    tagline: "Offline countdown app · iOS App Store",
     description:
-      "An offline app to count down the days until anything, built with React Native and Expo. " +
-      "The focus here is the Android side: learning the EAS Android build and Google Play release path.",
+      "A clean, ad-free countdown app built for my newborn's due date, made with React Native and Expo. " +
+      "Live on the iOS App Store, with the Android build in public testing.",
     tags: ["Expo", "React Native", "AsyncStorage", "EAS Build", "TypeScript"],
+    thumbnail: "/daystill/DaysTillBaby.jpeg",
+    thumbnailPortrait: true,
     pageHash: "#/projects/daystill",
   },
 ];
@@ -752,15 +763,23 @@ export type AppProject = {
   tagline: string;
   kicker: string;
   intro: string;
-  focus: { label: string; text: string };
+  problem: { label: string; text: string };
+  solution: { label: string; text: string };
   features: { label: string; text: string }[];
-  publishTitle: string;
-  publishLead: string;
-  publishSteps: { step: string; title: string; text: string }[];
+  challengesTitle: string;
+  challengesLead: string;
+  challenges: { title: string; text: string }[];
+  screenshots?: {
+    caption: string;
+    image: string;
+    orientation?: "portrait" | "landscape";
+  }[];
   highlights: string[];
   status: string;
-  privacyUrl: string;
-  githubUrl: string;
+  privacyUrl?: string;
+  githubUrl?: string;
+  // Text for the "Source code" link card. Defaults to the Expo/React Native copy.
+  sourceText?: string;
   storeUrl?: string;
   storeUrlLabel?: string;
 };
@@ -774,13 +793,21 @@ export const speedometer: AppProject = {
     "Speedometer No Ads turns your phone into a large, glanceable GPS speedometer for slower rides: golf " +
     "carts, e-scooters, and e-bikes. It smooths the raw GPS signal, warns you when you cross a speed limit " +
     "you set, and tracks your trip. No ads, no accounts, no data collection. Built with React Native and " +
-    "Expo. The real point of this project is to learn the Apple side of shipping mobile software.",
-  focus: {
-    label: "Focus: publishing to the iPhone App Store",
+    "Expo, and now live on the iOS App Store.",
+  problem: {
+    label: "The problem",
     text:
-      "Speedometer is my deep dive into Apple's release pipeline: enrolling in the Apple Developer Program, " +
-      "cloud-building the signed iOS binary with EAS (no Mac required), testing through TestFlight, and taking " +
-      "the app all the way through App Store review.",
+      "In my Texas neighborhood, people were getting speeding tickets on their golf carts. Golf carts don't " +
+      "come with speedometers, and neither do e-scooters or e-bikes, so there was no easy way to know how fast " +
+      "you were actually going. Every speedometer app I tried was buried in ads or locked the basics behind a " +
+      "paywall. I just wanted one clean app, with zero monetization, that shows your speed and gets out of the way.",
+  },
+  solution: {
+    label: "How it came together",
+    text:
+      "I bounced the idea off ChatGPT to shape the concept and the feature set, then built it with React Native " +
+      "and Expo, leaning on GitHub Copilot to move fast. The result is exactly the tool I wished existed: a big, " +
+      "honest speed readout with no ads, no accounts, and no tracking.",
   },
   features: [
     {
@@ -804,62 +831,66 @@ export const speedometer: AppProject = {
       text: "Fully offline. Location is used only on-device to compute speed and is never uploaded. No ads, ever.",
     },
   ],
-  publishTitle: "The road to the App Store",
-  publishLead:
-    "EAS builds the signed iOS binary in the cloud, so the entire Apple path works without owning a Mac.",
-  publishSteps: [
+  challengesTitle: "The hoops I had to jump through",
+  challengesLead:
+    "Building the app was the easy part. Getting it published was the real adventure.",
+  challenges: [
     {
-      step: "01",
-      title: "Apple Developer Program",
-      text: "Enroll ($99/year) to unlock code signing and App Store Connect.",
+      title: "Apple Developer setup",
+      text: "Enrolling in the Apple Developer Program and wiring up code signing, provisioning, and App Store Connect was a maze of hoops before a single feature mattered.",
     },
     {
-      step: "02",
-      title: "App identity",
-      text: "Reserve the bundle identifier and create the app record in App Store Connect.",
+      title: "Rejected, then resubmitted",
+      text: "Apple rejected my first submission. I had to work through their feedback and resubmit before the app was finally approved.",
     },
     {
-      step: "03",
-      title: "Cloud build",
-      text: "`eas build --platform ios --profile production` generates the signed build; EAS manages the certificates and provisioning.",
+      title: "The sprint demo",
+      text: "To prove the speedometer actually worked, I had to record a demo, which meant literally sprinting around my house so the numbers would climb for the reviewers.",
     },
     {
-      step: "04",
-      title: "TestFlight",
-      text: "The build lands in TestFlight for real-device testing before it ever reaches the public.",
+      title: "Shared with the neighborhood",
+      text: "Once it was live, I posted it to my neighborhood Facebook group and got a wave of kind comments and likes from the exact people it was built for.",
     },
+  ],
+  screenshots: [
     {
-      step: "05",
-      title: "Listing & privacy",
-      text: "Add screenshots, the description, and the public privacy-policy URL required by Apple.",
-    },
-    {
-      step: "06",
-      title: "Submit for review",
-      text: "`eas submit` uploads the build to App Store Connect, then Apple reviews and releases it.",
+      caption: "Speedometer No Ads running on iOS: a big, glanceable speed readout with no ads in sight.",
+      image: "/speedometer/Speedometer.jpeg",
+      orientation: "portrait",
     },
   ],
   highlights: ["Expo", "React Native", "expo-location", "EAS Build", "TypeScript", "iOS"],
-  status: "iOS build in progress — heading for App Store review",
+  status: "Live on the iOS App Store — the Android build is in public testing on Google Play.",
   privacyUrl: "https://austinakerley.com/speedometer/privacy",
   githubUrl: "https://github.com/AustinJAkerley/Speedometer",
+  storeUrl: "https://apps.apple.com/us/app/speedometer-no-ads/id6792160514",
+  storeUrlLabel: "App Store",
 };
 
 export const daysTill: AppProject = {
   hash: "#/projects/daystill",
   name: "DaysTill",
   tagline: "Count down the days until anything. Offline, no accounts.",
-  kicker: "Project 08 / Android app",
+  kicker: "Project 08 / iOS & Android app",
   intro:
     "DaysTill is a clean, offline app for counting down the days until anything: a goal, a trip, a deadline, " +
-    "or something you're trying to get past. Add a countdown with a title, date, and color, and watch it tick " +
-    "down. No ads, no accounts, no tracking; countdowns live on your device. Built with React Native and Expo. " +
-    "The real point of this project is to learn the Android side of shipping mobile software.",
-  focus: {
-    label: "Focus: the Android build path",
+    "or a due date. Add a countdown with a title, date, and color, and watch it tick down. No ads, no accounts, " +
+    "no tracking; countdowns live on your device. Built with React Native and Expo, and now live on the iOS " +
+    "App Store.",
+  problem: {
+    label: "The problem",
     text:
-      "DaysTill is my deep dive into Google Play: the EAS Android build (a signed .aab), keystore management, " +
-      "internal testing tracks, the Data safety form, and rolling out a production release.",
+      "I wanted a countdown app dedicated to my newborn's due date. The one I was using was so ad-infested that " +
+      "it would make me sit through a full video ad just to see my daughter's due date. I wanted something clean " +
+      "and personal instead: a countdown you can open and see instantly, with nothing standing between you and " +
+      "the moment you're waiting for.",
+  },
+  solution: {
+    label: "How it came together",
+    text:
+      "I bounced the idea off ChatGPT to shape it, then built it with React Native and Expo and GitHub Copilot. " +
+      "It's fully offline with no accounts and no tracking, so your countdowns stay on your device and load the " +
+      "instant you open the app.",
   },
   features: [
     {
@@ -883,43 +914,120 @@ export const daysTill: AppProject = {
       text: "Automatic light/dark theme, stored locally via AsyncStorage, and fully offline. Nothing leaves your device.",
     },
   ],
-  publishTitle: "The road to Google Play",
-  publishLead:
-    "EAS builds the signed Android App Bundle in the cloud and can submit it straight to the Play Console.",
-  publishSteps: [
+  challengesTitle: "The hoops I had to jump through",
+  challengesLead:
+    "Shipping to both stores meant two developer setups and two review processes before anyone could install it.",
+  challenges: [
     {
-      step: "01",
-      title: "Play Console",
-      text: "Register the Google Play developer account (a one-time $25 fee).",
+      title: "Two stores, two setups",
+      text: "DaysTill targets both iOS and Android, which means two developer programs, two signing setups, and two consoles to configure before a build reaches anyone.",
     },
     {
-      step: "02",
-      title: "App identity",
-      text: "Set the Android package name and create the app in the Play Console.",
+      title: "Apple developer hoops",
+      text: "The Apple side alone was a lot: enrolling in the Developer Program, code signing, and pushing the app through App Store review before it could go live.",
     },
     {
-      step: "03",
-      title: "Cloud build",
-      text: "`eas build --platform android --profile production` generates the signed .aab; EAS manages the upload keystore.",
-    },
-    {
-      step: "04",
-      title: "Internal testing",
-      text: "Upload to an internal testing track to install and try it on real Android devices first.",
-    },
-    {
-      step: "05",
-      title: "Data safety & privacy",
-      text: "Complete Google Play's Data safety form and link the public privacy-policy URL.",
-    },
-    {
-      step: "06",
-      title: "Production release",
-      text: "`eas submit` uploads the bundle to Play, then roll it out to the production track.",
+      title: "Android in public testing",
+      text: "The Android build is currently in Google Play's public testing track, working its way toward a full production release.",
     },
   ],
-  highlights: ["Expo", "React Native", "AsyncStorage", "EAS Build", "TypeScript", "Android"],
-  status: "Android build in progress — heading for Google Play",
+  screenshots: [
+    {
+      caption: "DaysTill counting down to a due date: clean, personal, and free of ads.",
+      image: "/daystill/DaysTillBaby.jpeg",
+      orientation: "portrait",
+    },
+  ],
+  highlights: ["Expo", "React Native", "AsyncStorage", "EAS Build", "TypeScript", "iOS", "Android"],
+  status: "Live on the iOS App Store — the Android build is in public testing on Google Play.",
   privacyUrl: "https://austinakerley.com/daystill/privacy",
   githubUrl: "https://github.com/AustinJAkerley/DaysTill",
+  storeUrl: "https://apps.apple.com/us/app/daystill-baby/id6792157635",
+  storeUrlLabel: "App Store",
+};
+export const tyrantEspresso: AppProject = {
+  hash: "#/projects/tyrant-espresso",
+  name: "TyrantEspresso",
+  tagline: "An espresso machine that demands a cryptographic handshake before it pours.",
+  kicker: "Project 06 / Hardware + smartcards",
+  intro:
+    "TyrantEspresso is a smartcard-gated espresso machine. Before it will pull a shot, it demands proof: " +
+    "tap an SLE4442 smartcard and the machine checks the private key stored on it against a certificate it " +
+    "trusts. No valid card, no coffee. It's part hardware build, part applied cryptography, and part inside " +
+    "joke that now lives in the Microsoft kitchen.",
+  problem: {
+    label: "The problem",
+    text:
+      "I wanted an espresso machine with a personality: a tyrant that refuses to serve anyone who can't prove " +
+      "who they are. The idea was to gate a real espresso machine behind smartcard authentication, so pulling a " +
+      "shot means presenting a card the machine cryptographically trusts. Equal parts security demo and kitchen " +
+      "prank.",
+  },
+  solution: {
+    label: "How it came together",
+    text:
+      "I built a control box that sits between the button and the machine and wired it to a smartcard reader. " +
+      "Tap an SLE4442 card and a driver reads the private key off it, checks it against the trusted certificate, " +
+      "and only then lets the shot through. I bounced the design off ChatGPT and leaned on GitHub Copilot to " +
+      "move fast, and I got great help from Alex on my team, who deserves a big shout-out for getting me " +
+      "unstuck more than once on the card and driver work.",
+  },
+  features: [
+    {
+      label: "The smartcard gate",
+      text: "Present an SLE4442 card and the machine verifies it before it will pour. No valid card, no espresso.",
+    },
+    {
+      label: "Just the private key",
+      text: "The SLE4442 cards are tiny, so the full certificate won't fit. Only the private key rides on the card; the machine holds the certificate it checks against.",
+    },
+    {
+      label: "A control box of its own",
+      text: "A custom enclosure houses the reader, wiring, and control electronics, wired into the machine through cable glands.",
+    },
+    {
+      label: "Driver-level card access",
+      text: "A low-level driver talks to the reader over ioctl calls to read the SLE4442 memory directly and speak the protocol it expects.",
+    },
+    {
+      label: "Out in the wild",
+      text: "It sits in the Microsoft kitchen and will keep guarding the espresso until the day it finally stops working.",
+    },
+  ],
+  challengesTitle: "The hard part",
+  challengesLead:
+    "The cryptography was the fun part. The physical build and the card plumbing are where it got real.",
+  challenges: [
+    {
+      title: "Finding cable glands",
+      text: "Sourcing the right cable glands to route the wiring cleanly and safely into the enclosure turned into a surprising scavenger hunt.",
+    },
+    {
+      title: "The right drill bits",
+      text: "Cutting clean, correctly sized holes in the box meant tracking down the right drill bits before anything would fit.",
+    },
+    {
+      title: "Making the reader talk to SLE4442",
+      text: "Getting the smartcard reader to actually cooperate with SLE4442 cards took real effort; they're a quirky memory-card format, not your typical processor card.",
+    },
+    {
+      title: "Too small for the cert",
+      text: "The cards simply couldn't hold the full certificate, so I had to store only the private key on the card and keep the certificate on the machine side.",
+    },
+    {
+      title: "Down to ioctl and drivers",
+      text: "Reading and writing the cards meant dropping down to ioctl calls and card drivers to speak the exact protocol the reader wanted.",
+    },
+  ],
+  screenshots: [
+    {
+      caption: "TyrantEspresso standing guard in the Microsoft kitchen.",
+      image: "/TyrantEspresso/TyrantEspresso.jpeg",
+      orientation: "landscape",
+    },
+  ],
+  highlights: ["Smartcards", "SLE4442", "C / ioctl", "Hardware", "PKI", "Espresso"],
+  status: "Live in the Microsoft kitchen — and it'll keep guarding the espresso until it stops working.",
+  sourceText: "The control code and card tooling for the smartcard-gated espresso machine, on GitHub.",
+  githubUrl: "https://github.com/AustinJAkerley/TyrantEspresso",
 };

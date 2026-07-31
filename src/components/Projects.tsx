@@ -24,15 +24,30 @@ export default function Projects() {
               </span>
             </div>
 
-            <article className="card">
-              <header className="card__head">
-                <h3 className="card__title">
-                  {project.name}{" "}
-                  <span className="card__team">· {project.tagline}</span>
-                </h3>
-              </header>
+            <article
+              className={project.pageHash ? "card card--clickable" : "card"}
+              onClick={
+                project.pageHash
+                  ? () => {
+                      window.location.hash = project.pageHash!;
+                    }
+                  : undefined
+              }
+            >
+              <div className={project.thumbnailPortrait ? "card__split" : undefined}>
+                <div
+                  className={
+                    project.thumbnailPortrait ? "card__splitBody" : undefined
+                  }
+                >
+                  <header className="card__head">
+                    <h3 className="card__title">
+                      {project.name}{" "}
+                      <span className="card__team">· {project.tagline}</span>
+                    </h3>
+                  </header>
 
-              <p className="card__product">{project.description}</p>
+                  <p className="card__product">{project.description}</p>
 
               {project.tags && project.tags.length > 0 && (
                 <ul className="chips card__tags">
@@ -44,7 +59,7 @@ export default function Projects() {
                 </ul>
               )}
 
-              {project.thumbnail && (
+              {project.thumbnail && !project.thumbnailPortrait && (
                 <div className="card__thumb">
                   <img
                     className="card__thumbImg"
@@ -94,6 +109,30 @@ export default function Projects() {
                   </div>
                 )
               )}
+                </div>
+                {project.thumbnailPortrait && project.thumbnail && (
+                  <div className="card__thumb card__thumb--portrait">
+                    <img
+                      className="card__thumbImg"
+                      src={project.thumbnail}
+                      alt={`${project.name} preview`}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        const label = e.currentTarget
+                          .nextElementSibling as HTMLElement | null;
+                        if (label) label.style.display = "flex";
+                      }}
+                    />
+                    <span
+                      className="card__thumbLabel"
+                      style={{ display: "none" }}
+                    >
+                      Photo coming soon
+                    </span>
+                  </div>
+                )}
+              </div>
             </article>
           </li>
         ))}

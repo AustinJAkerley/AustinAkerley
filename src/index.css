@@ -585,6 +585,10 @@ main {
   border-color: rgba(200, 162, 74, 0.5);
 }
 
+.card--clickable {
+  cursor: pointer;
+}
+
 .card__head {
   margin-bottom: 0.9rem;
 }
@@ -789,7 +793,7 @@ main {
 /* ---------- Project card extras (timeline) ---------- */
 .card__thumb {
   margin: 0.4rem 0 1.1rem;
-  height: 160px;
+  min-height: 160px;
   border-radius: 12px;
   border: 1px dashed var(--border);
   background: linear-gradient(135deg, var(--surface-2), var(--bg-soft));
@@ -801,8 +805,8 @@ main {
 
 .card__thumbImg {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .card__thumbLabel {
@@ -810,6 +814,52 @@ main {
   font-size: 0.82rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+
+/* Portrait thumbnail: text on the left (3/4), image on the right (1/4). */
+.card__split {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.card__splitBody {
+  flex: 1 1 75%;
+  width: 75%;
+  min-width: 0;
+}
+
+.card__thumb--portrait {
+  flex: 0 0 25%;
+  width: 25%;
+  height: auto;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  border-style: solid;
+  background: var(--bg);
+  align-self: flex-start;
+}
+
+.card__thumb--portrait .card__thumbImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .card__split {
+    flex-direction: column;
+  }
+
+  .card__splitBody,
+  .card__thumb--portrait {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .card__thumb--portrait {
+    max-width: 220px;
+  }
 }
 
 .card__cta {
@@ -1062,6 +1112,46 @@ main {
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+/* ---------- Showcase: text left, portrait screenshot right ---------- */
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  align-items: start;
+}
+
+.showcase__body {
+  margin-bottom: 0;
+}
+
+.showcase__media {
+  justify-self: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.shot--portrait .shot__frame {
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.shot--portrait .shot__fallback {
+  aspect-ratio: 9 / 19.5;
+}
+
+@media (min-width: 860px) {
+  .showcase {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+    gap: 3.5rem;
+  }
+
+  .showcase__media {
+    justify-self: end;
+    position: sticky;
+    top: 6rem;
+  }
 }
 
 /* ---------- Install section (primary CTA) ---------- */
