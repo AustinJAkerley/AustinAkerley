@@ -11,7 +11,7 @@ import PcBuildProject from "./components/PcBuildProject";
 import StatelessVaultProject from "./components/StatelessVaultProject";
 import SeeHandshakeProject from "./components/SeeHandshakeProject";
 import AppProjectPage from "./components/AppProjectPage";
-import { pcBuild, statelessVault, seeHandshake, speedometer, daysTill, tyrantEspresso } from "./data/resume";
+import { pcBuild, statelessVault, seeHandshake, speedometer, daysTill, tyrantEspresso, autoSkipYt } from "./data/resume";
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -33,6 +33,7 @@ export default function App() {
   const isSpeedometer = hash === speedometer.hash;
   const isDaysTill = hash === daysTill.hash;
   const isTyrantEspresso = hash === tyrantEspresso.hash;
+  const isAutoSkipYt = hash === autoSkipYt.hash;
 
   // Scroll to the top when entering a dedicated project page.
   useEffect(() => {
@@ -42,10 +43,11 @@ export default function App() {
       isSeeHandshake ||
       isSpeedometer ||
       isDaysTill ||
-      isTyrantEspresso
+      isTyrantEspresso ||
+      isAutoSkipYt
     )
       window.scrollTo(0, 0);
-  }, [isPcBuild, isStatelessVault, isSeeHandshake, isSpeedometer, isDaysTill, isTyrantEspresso]);
+  }, [isPcBuild, isStatelessVault, isSeeHandshake, isSpeedometer, isDaysTill, isTyrantEspresso, isAutoSkipYt]);
 
   return (
     <>
@@ -73,6 +75,10 @@ export default function App() {
       ) : isTyrantEspresso ? (
         <main>
           <AppProjectPage project={tyrantEspresso} />
+        </main>
+      ) : isAutoSkipYt ? (
+        <main>
+          <AppProjectPage project={autoSkipYt} />
         </main>
       ) : (
         <main>

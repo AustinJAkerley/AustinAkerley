@@ -286,6 +286,17 @@ export const projects: Project[] = [
     thumbnailPortrait: true,
     pageHash: "#/projects/daystill",
   },
+  {
+    number: 9,
+    name: "AutoSkipYT",
+    tagline: "Screen-watching automation · PyPI",
+    description:
+      "A cross-platform Python package that keeps an eye on a corner of your screen, spots a button you " +
+      "taught it with OpenCV template matching, clicks it, and slips your cursor back where it was. Visual " +
+      "desktop automation with a Typer CLI, published to PyPI for Windows and Linux.",
+    tags: ["Python", "OpenCV", "mss", "PyAutoGUI", "Typer", "PyPI"],
+    pageHash: "#/projects/autoskip-yt",
+  },
 ];
 
 export const pcBuild: PcBuild = {
@@ -782,6 +793,7 @@ export type AppProject = {
   sourceText?: string;
   storeUrl?: string;
   storeUrlLabel?: string;
+  storeText?: string;
 };
 
 export const speedometer: AppProject = {
@@ -945,6 +957,84 @@ export const daysTill: AppProject = {
   storeUrl: "https://apps.apple.com/us/app/daystill-baby/id6792157635",
   storeUrlLabel: "App Store",
 };
+
+export const autoSkipYt: AppProject = {
+  hash: "#/projects/autoskip-yt",
+  name: "AutoSkipYT",
+  tagline: "My first Python package published to PyPI.",
+  kicker: "Project 09 / Python package",
+  intro:
+    "AutoSkipYT is visual desktop automation: it watches a corner of your screen for a button you configure, " +
+    "matches it with OpenCV template matching, clicks it, and returns your cursor to where it was. But the part " +
+    "I'm actually celebrating is where it lives — this is the first Python package I have ever published to PyPI, " +
+    "installable anywhere with a single `pip install autoskipYT`.",
+  problem: {
+    label: "Why I built it",
+    text:
+      "I'd shipped apps to the iOS App Store and Google Play, a crate to Rust's registry, and an extension to the " +
+      "Chrome Web Store. The one publishing muscle I hadn't flexed was the biggest one in the Python world: PyPI, " +
+      "the index behind essentially every `pip install` on earth. I wanted a genuinely useful tool as the vehicle " +
+      "rather than a toy, so I built a generic screen-watching clicker and used it to learn the whole packaging and " +
+      "publishing pipeline end to end.",
+  },
+  solution: {
+    label: "How it came together",
+    text:
+      "The engine is deliberately generic: hand it a tightly-cropped template image of any on-screen button and it " +
+      "finds and clicks it. Fast screenshots come from mss, matching from OpenCV, clicking from PyAutoGUI, and the " +
+      "CLI from Typer. I packaged it with a modern src layout and Hatchling, typed the whole thing for mypy, wrote a " +
+      "pytest suite that runs without a real display, then shipped it to PyPI as autoskipYT.",
+  },
+  features: [
+    {
+      label: "One-command install",
+      text: "pip install autoskipYT, then autoskipyt run. A real, versioned package anyone can pull straight from PyPI.",
+    },
+    {
+      label: "Generic detection engine",
+      text: "Point it at any button template; it isn't tied to any single site or app. OpenCV template matching, gated by a confidence threshold you control.",
+    },
+    {
+      label: "Polite with your cursor",
+      text: "It saves your mouse position, clicks the target, and only puts the cursor back if you didn't move it yourself in the meantime.",
+    },
+    {
+      label: "Batteries included",
+      text: "A Typer CLI with run, test, calibrate, and templates commands, strict mypy types, Ruff linting, and tests that never need a screen.",
+    },
+    {
+      label: "Cross-platform",
+      text: "Runs on Windows and Linux (X11). A configurable scan region keeps it fast and light on the CPU.",
+    },
+  ],
+  challengesTitle: "The hoops I had to jump through",
+  challengesLead:
+    "Writing the code was quick. Learning to publish to PyPI the right way was the real lesson.",
+  challenges: [
+    {
+      title: "The name was taken",
+      text: "My first choice, autoskip, was already on PyPI, so I had to pick and verify a fresh, available name. It became autoskipYT.",
+    },
+    {
+      title: "403 Forbidden on upload",
+      text: "My first upload attempts bounced until I sorted out API tokens and the account-scoped token PyPI requires for a brand-new project.",
+    },
+    {
+      title: "Rehearse on TestPyPI",
+      text: "I practiced on TestPyPI first, then pushed the real 0.1.0 to PyPI — and learned that a version number, once published, can never be reused.",
+    },
+    {
+      title: "Wayland said no",
+      text: "On my Pop!_OS machine it wouldn't run until I switched to an X11 session; Wayland blocks the global screen capture and mouse control the tool depends on. That limitation is now documented front and center.",
+    },
+  ],
+  highlights: ["Python 3.11+", "OpenCV", "mss", "PyAutoGUI", "Typer", "Hatchling", "PyPI"],
+  status: "Live on PyPI as autoskipYT 0.1.0 — my first published Python package. Install it with pip install autoskipYT.",
+  storeUrl: "https://pypi.org/project/autoskipYT/",
+  storeUrlLabel: "PyPI",
+  storeText: "My first package on the Python Package Index. Install it with pip install autoskipYT.",
+};
+
 export const tyrantEspresso: AppProject = {
   hash: "#/projects/tyrant-espresso",
   name: "TyrantEspresso",

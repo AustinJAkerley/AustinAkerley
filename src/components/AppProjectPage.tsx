@@ -198,7 +198,7 @@ export default function AppProjectPage({ project }: { project: AppProject }) {
                 aria-label={`Get ${p.name} from the store`}
               >
                 <h3 className="feature__title">{p.storeUrlLabel ?? "Get the app"}</h3>
-                <p className="feature__text">Download the published app.</p>
+                <p className="feature__text">{p.storeText ?? "Download the published app."}</p>
                 <div className="card__link">
                   <ExternalLinkIcon /> {p.storeUrlLabel ?? "App store"}
                 </div>
