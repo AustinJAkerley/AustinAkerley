@@ -288,6 +288,20 @@ export const projects: Project[] = [
   },
   {
     number: 9,
+    name: "AI HR",
+    tagline: "VS Code extension · Marketplace",
+    description:
+      "A satirical VS Code extension that reads local GitHub Copilot chat history and asks an in-editor " +
+      "AI HR investigator to decide whether you'd keep your job. Built with the VS Code Language Model API " +
+      "and published to the Visual Studio Marketplace.",
+    tags: ["TypeScript", "VS Code Extension API", "GitHub Copilot", "Language Model API"],
+    url: "https://github.com/AustinJAkerley/AI-HR",
+    urlLabel: "github.com/AustinJAkerley/AI-HR",
+    storeUrl: "https://marketplace.visualstudio.com/items?itemName=AustinAkerley.ai-hr",
+    storeUrlLabel: "Visual Studio Marketplace",
+  },
+  {
+    number: 10,
     name: "AutoSkipYT",
     tagline: "Screen-watching automation · PyPI",
     description:
@@ -962,7 +976,7 @@ export const autoSkipYt: AppProject = {
   hash: "#/projects/autoskip-yt",
   name: "AutoSkipYT",
   tagline: "My first Python package published to PyPI.",
-  kicker: "Project 09 / Python package",
+  kicker: "Project 10 / Python package",
   intro:
     "AutoSkipYT is visual desktop automation: it watches a corner of your screen for a button you configure, " +
     "matches it with OpenCV template matching, clicks it, and returns your cursor to where it was. But the part " +
